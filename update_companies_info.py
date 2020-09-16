@@ -109,7 +109,7 @@ def update_db():
     new_files = new_files.fillna(pd.to_datetime('1900-01-01'))
     new_files = new_files[new_files['url_date'] > new_files['last_modified']]
     if len(new_files) == 0:
-        print('All files are up to date.')
+        print('All company files are up to date.')
     
     # for each new or updated zip file:
     # 1 - download the zip file and extract all files within
