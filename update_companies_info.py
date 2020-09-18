@@ -156,14 +156,16 @@ def load_fs():
                 df = df.drop_duplicates(subset=['cnpj', 'dt_fim_exerc', 'cd_conta'], keep='first')
                 df['dt_fim_exerc'] = pd.to_datetime(df['dt_fim_exerc'])
                 if fs in ['bpa', 'bpp']:
-                    df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'vl_conta', 'itr_dfp']]
+                    df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'vl_conta', 'itr_dfp', 'escala_moeda']]
                 if fs in ['dre', 'dva', 'dfc', 'dmpl']:
                     df['dt_ini_exerc'] = pd.to_datetime(df['dt_ini_exerc'])
                     df['fiscal_quarter'] = (((df['dt_fim_exerc'].dt.year - df['dt_ini_exerc'].dt.year) * 12 + (df['dt_fim_exerc'].dt.month - df['dt_ini_exerc'].dt.month)) + 1 ) / 3
                     if fs == 'dmpl':
-                        df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_ini_exerc', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'coluna_df', 'vl_conta', 'itr_dfp', 'fiscal_quarter']]        
+                        df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_ini_exerc', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'coluna_df', 'vl_conta', 'itr_dfp', 'fiscal_quarter', 'escala_moeda']]        
                     else:
-                        df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_ini_exerc', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'vl_conta', 'itr_dfp', 'fiscal_quarter']]
+                        df = df[['cnpj', 'dt_refer', 'grupo_dfp', 'dt_ini_exerc', 'dt_fim_exerc', 'cd_conta', 'ds_conta', 'vl_conta', 'itr_dfp', 'fiscal_quarter', 'escala_moeda']]
+                df['vl_conta'][df['escala_moeda'] == 'UNIDADE'] = df['vl_conta']/1000
+                df.drop(columns=['escala_moeda'], inplace=True)
                 db.execute(f"""DELETE FROM {fs} 
                                WHERE dt_refer = {dt_refer} AND itr_dfp = '{itr_dfp}' AND grupo_dfp = '{grupo}' """)
                 df.to_sql(f'{fs}', conn, if_exists='append', index=False)
@@ -176,3 +178,5 @@ def load_fs():
 update_db()  
 
 conn.close()       
+
+
