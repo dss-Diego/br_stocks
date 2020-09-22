@@ -7,3 +7,4 @@ data/temp/
 __pycache__/
 tests.py
 *.xlsx
+update_tickers.py
