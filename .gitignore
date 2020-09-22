@@ -1,2 +1,7 @@
-data/
+data\cotahist/
+data\ftp_files/
+data\temp/
+*.db
 __pycache__/
+tests.py
+*.xlsx
