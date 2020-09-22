@@ -255,6 +255,6 @@ def load_fs():
 
 #%%
 
-update_db()
+
 
 

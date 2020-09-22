@@ -10,15 +10,30 @@ import os
 import plots as _plots
 import numpy as np
 import sqlite3
+import update_prices
+import update_companies_info
+
 
 pd.set_option("display.width", 400)
 pd.set_option("display.max_columns", 10)
 pd.options.mode.chained_assignment = None
 
 cwd = os.getcwd()
+
+if not os.path.exists("data"):
+    os.makedirs("data")
+if not os.path.exists("data\\cotahist"):
+    os.makedirs("data\\cotahist")
+if not os.path.exists("data\\ftp_files"):
+    os.makedirs("data\\ftp_files")
+if not os.path.exists("data\\temp"):
+    os.makedirs("data\\temp")
+
 conn = sqlite3.connect(cwd + "\\data\\finance.db")
 db = conn.cursor()
 
+update_companies_info.update_db()
+update_prices.update_prices()
 
 # %% Functions
 class Ticker:
