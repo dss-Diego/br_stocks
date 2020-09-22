@@ -28,7 +28,7 @@ db = conn.cursor()
 #%% functions
 def create_prices():
     query = """
-    CREATE TABLE IF NOT EXISTS prices2
+    CREATE TABLE IF NOT EXISTS prices
     (
          date DATE,
          ticker TEXT,
