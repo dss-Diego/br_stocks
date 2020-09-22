@@ -90,6 +90,12 @@ def update_db():
     # create database tables
     create_tables()
 
+    # Update tickers registers with data from github
+    tickers = pd.read_csv('https://raw.githubusercontent.com/dss-Diego/br_stocks/master/tickers.csv')
+    db.execute('DELETE FROM tickers')
+    conn.commit()
+    tickers.to_sql('tickers', conn, if_exists='replace', index=False)
+
     # clean temp directory
     for file in os.listdir(cwd + "\\data\\temp"):
         os.remove(cwd + "\\data\\temp\\" + file)
