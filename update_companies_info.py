@@ -165,11 +165,11 @@ def update_db():
 
 def load_fs():
     for file in os.listdir(cwd + "\\data\\temp"):
-        if len(file) != 23:
-            fs = file[15:-13].lower()
+        if len(file) != 23: # Ignores useless files like itr_cia_aberta_2019.csv
+            fs = file[15:-13].lower() # fs -> financial statement
             if len(fs) == 6:
                 fs = fs[:3]
-            itr_dfp = file[0:3]
+            itr_dfp = file[0:3] # itr_dfp is used to update the db.
             df = pd.read_csv(
                 cwd + "\\data\\temp\\" + file, sep=";", header=0, encoding="latin-1"
             )
@@ -186,6 +186,8 @@ def load_fs():
                     subset=["cnpj", "dt_fim_exerc", "cd_conta"], keep="first"
                 )
                 df["dt_fim_exerc"] = pd.to_datetime(df["dt_fim_exerc"])
+
+                # Start process the dataframe according to the type of finanacial statement:
                 if fs in ["bpa", "bpp"]:
                     df = df[
                         [

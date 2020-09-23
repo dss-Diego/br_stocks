@@ -6,6 +6,7 @@ Created on Sat Sep 19 17:06:40 2020
 """
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import pandas as pd
 
 def bs_plot(df, denom_comerc, grupo):
 

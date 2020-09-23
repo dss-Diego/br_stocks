@@ -260,7 +260,7 @@ Try setting the financial statements to individual:
         df = df[df["dt_fim_exerc"] >= begin_period]
         df = Ticker.create_pivot_table(df)
         if plot:
-            _plots.bs_plot(df, self.denom_comerc, self.grupo)
+            _plots.bs_plot(df, self.ticker, self.grupo)
         return df
 
     def cash_flow(self, quarter=True, ytd=True, ttm=True, start_period="all"):
@@ -379,7 +379,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Net Income (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Net Income (R$,000) ')
         return df
 
     def ebit(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -421,7 +421,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' EBIT (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' EBIT (R$,000) ')
         return df
 
     def depre_amort(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -452,7 +452,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' D&A (R$,000)')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' D&A (R$,000)')
         return df
 
     def ebitda(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -504,7 +504,7 @@ Try setting the financial statements to individual:
             columns=["fiscal_quarter", "ds_conta", "ytd_ebit", "ytd_d_a", "d_a", "ebit"]
         )
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' EBITDA (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' EBITDA (R$,000) ')
         return df
 
     def revenue(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -537,7 +537,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Revenue (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Revenue (R$,000) ')
         return df
 
     def cash_equi(self, start_period="all", plot=False):
@@ -555,7 +555,7 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df.index = pd.to_datetime(df.index)
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Cash & Equivalents (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Cash & Equivalents (R$,000) ')
         return df
 
     def total_debt(self, start_period="all", plot=False):
@@ -572,7 +572,7 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df.index = pd.to_datetime(df.index)
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Total Debt (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Debt (R$,000) ')
         return df
 
     def market_value(self, start_period="all", plot=False):
@@ -596,7 +596,7 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df.index = pd.to_datetime(df.index)
         if plot:
-            _plots.line_plot(df, self.denom_comerc, self.grupo, line=' Market Value (R$,000) ')
+            _plots.line_plot(df, self.ticker, self.grupo, line=' Market Value (R$,000) ')
         return df
 
     def net_debt(self, start_period="all", plot=False):
@@ -605,7 +605,7 @@ Try setting the financial statements to individual:
         net_debt = total_debt["total_debt"] - cash["cash_equi"]
         net_debt.rename("net_debt", axis=1, inplace=True)
         if plot:
-            _plots.bar_plot(pd.DataFrame(net_debt), self.denom_comerc, self.grupo, bars = ' Net Debt (R$,000) ')
+            _plots.bar_plot(pd.DataFrame(net_debt), self.ticker, self.grupo, bars = ' Net Debt (R$,000) ')
         return net_debt
 
     def eps(self, start_period="all"):
@@ -636,7 +636,7 @@ Try setting the financial statements to individual:
         pe = prices["price"] / eps["eps"]
         pe.rename("p_e", inplace=True)
         if plot:
-            _plots.line_plot(pd.DataFrame(pe), self.denom_comerc, self.grupo, line=' Price/Earnings ')
+            _plots.line_plot(pd.DataFrame(pe), self.ticker, self.grupo, line=' Price/Earnings ')
         return pe
 
     def total_equity(self, start_period="all", plot=False):
@@ -652,7 +652,7 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df.index = pd.to_datetime(df.index)
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Total Equity (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Equity (R$,000) ')
         return df
 
     def total_assets(self, start_period="all", plot=False):
@@ -668,7 +668,7 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df.index = pd.to_datetime(df.index)
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' Total Assets (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Assets (R$,000) ')
         return df
 
     def roe(self, start_period="all", plot=False):
@@ -680,7 +680,7 @@ Try setting the financial statements to individual:
         roe.rename("roe", inplace=True)
         roe = roe.dropna()
         if plot:
-            _plots.bar_plot(pd.DataFrame(roe), self.denom_comerc, self.grupo, bars = ' ROE (%) ')
+            _plots.bar_plot(pd.DataFrame(roe), self.ticker, self.grupo, bars = ' ROE (%) ')
         return roe
 
     def roa(self, start_period="all", plot=False):
@@ -692,7 +692,7 @@ Try setting the financial statements to individual:
         roa.rename("roa", inplace=True)
         roa = roa.dropna()
         if plot:
-            _plots.bar_plot(pd.DataFrame(roa), self.denom_comerc, self.grupo, bars = ' ROA (%) ')
+            _plots.bar_plot(pd.DataFrame(roa), self.ticker, self.grupo, bars = ' ROA (%) ')
         return roa
 
     def debt_to_equity(self, start_period="all"):
@@ -933,7 +933,7 @@ Try setting the financial statements to individual:
         df["ev"] = df["market_value"] + (df["net_debt"] * 1000)
         df = df[['ev']].dropna()
         if plot:
-            _plots.line_plot(df, self.denom_comerc, self.grupo, line=' Enterprise Value (R$,000) ')
+            _plots.line_plot(df, self.ticker, self.grupo, line=' Enterprise Value (R$,000) ')
         return df
 
     def ev_ebitda(self, start_period="all", plot=False):
@@ -948,7 +948,7 @@ Try setting the financial statements to individual:
         df["ev_ebitda"] = (df["ev"] / df["ttm_ebitda"]) / 1000
         df = df[['ev_ebitda']].dropna()
         if plot:
-            _plots.line_plot(df, self.denom_comerc, self.grupo, line=' EV/EBITDA  ')
+            _plots.line_plot(df, self.ticker, self.grupo, line=' EV/EBITDA  ')
         return df
 
     def ev_ebit(self, start_period="all", plot=False):
@@ -963,7 +963,7 @@ Try setting the financial statements to individual:
         df["ev_ebit"] = (df["ev"] / df["ttm_ebit"]) / 1000
         df = df[['ev_ebit']].dropna()
         if plot:
-            _plots.line_plot(df, self.denom_comerc, self.grupo, line=' EV/EBIT ')
+            _plots.line_plot(df, self.ticker, self.grupo, line=' EV/EBIT ')
         return df
 
     def bv_share(self, start_period="all"):
@@ -983,7 +983,7 @@ Try setting the financial statements to individual:
         p_bv = prices["price"] / bv["bv_share"]
         p_bv.rename("p_bv", inplace=True)
         if plot:
-            _plots.line_plot(pd.DataFrame(p_bv), self.denom_comerc, self.grupo, line=' Price/BV ')
+            _plots.line_plot(pd.DataFrame(p_bv), self.ticker, self.grupo, line=' Price/BV ')
         return p_bv
 
     def cagr_net_income(self, n_years=5):
@@ -1048,7 +1048,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.denom_comerc, self.grupo, bars = ' CFO (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' CFO (R$,000) ')
         return df
 
     def get_pairs(self):
