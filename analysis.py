@@ -1088,9 +1088,6 @@ Try setting the financial statements to individual:
             net_debt = Ticker.net_debt(to_compare[i]["obj"], start_period="last")
             mv = Ticker.market_value(to_compare[i]["obj"], start_period="last")
             ev = Ticker.enterprise_value(to_compare[i]["obj"], start_period="last")
-            total_shares = Ticker.total_shares(
-                to_compare[i]["obj"], start_period="last"
-            )
             ebitda = Ticker.ebitda(
                 to_compare[i]["obj"],
                 quarter=False,
@@ -1167,7 +1164,6 @@ Try setting the financial statements to individual:
                     net_debt,
                     mv,
                     ev,
-                    total_shares,
                     ebitda,
                     ebitda_margin,
                     financial_leverage,

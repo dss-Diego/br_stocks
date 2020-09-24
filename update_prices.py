@@ -1,6 +1,20 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Aug 26 16:23:14 2020
+This script will do the next steps:
+1 - create necessary directories (if not exists)
+2 - connect or create a sqlite3 database
+3 - create the table to store prices in the database (if not exists)
+4 - update prices, as follows:
+    * checks the most recent date of prices in the database
+        - if there are no prices in the database, download prices from a formated csv file in github
+            to avoid download and process lots of xml files.
+        - if there are prices in the database, and the current date is ahead
+            of the date of the last prices in the database, then proceed as follows:
+                - download and procees the file with prices from bvmfbovespa website;
+                - download and process the file with the number of shares of each ticker
+                - merge prices and shares
+                - upload the data to the database
 
 @author: Diego
 """
@@ -51,7 +65,7 @@ def get_last_database_price_date():
     if len(x) > 0:
         last_date = datetime.datetime.strptime(x.values[0][0],'%Y-%m-%d %H:%M:%S').date()
 
-    # if the database is new, with no prices, to avoid downloadding and processing lots of xml price files,
+    # if the database is new, with no prices, to avoid downloading and processing lots of xml price files,
     # that takes a lot of time to complete, it will take the last available file with prices in github.
     # Even if the github file is not up to date, it will be much easier to download only the missing files
     else:

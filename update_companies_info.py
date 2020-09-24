@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Aug 21 10:02:22 2020
+This script will do the next steps:
+1 - create necessary directories (if not exists)
+2 - create or connect to a sqlite3 database
+3 - create necessary tables to store companies info in the database (if not exists)
+4 - update tickers table with the ones availabe in  https://raw.githubusercontent.com/dss-Diego/br_stocks/master/tickers.csv
+5 - check in the CVM website if there are files not yet processed and stored in the database
+6 - in case of new or updated files, will download, process and load new data in the database
 
 @author: Diego
 """
@@ -173,15 +180,19 @@ def load_fs():
             df = pd.read_csv(
                 cwd + "\\data\\temp\\" + file, sep=";", header=0, encoding="latin-1", parse_dates=['DT_FIM_EXERC']
             )
-            if len(df) > 0:
+            if len(df) > 0: # so times there are empty files
+
+                # cleaning and formating the dataframe
                 df.columns = df.columns.str.lower()
                 df = df.rename(columns={"cnpj_cia": "cnpj"})
                 df = df[df["ordem_exerc"] == "ÚLTIMO"]
                 grupo = df["grupo_dfp"].str.split(" ", expand=True)[1].unique()[0]
-                dt_refer = int(df["dt_refer"].str[0:4].unique()[0])
+                dt_refer = int(df["dt_refer"].str[0:4].unique()[0]) # keep only year as reference to update the database
                 df["dt_refer"] = dt_refer
                 df["grupo_dfp"] = grupo
                 df["itr_dfp"] = itr_dfp
+
+                # some statements have both, quarter and ytd values. the next line will keep only the ytd.
                 df = df.drop_duplicates(
                     subset=["cnpj", "dt_fim_exerc", "cd_conta"], keep="first"
                 )
