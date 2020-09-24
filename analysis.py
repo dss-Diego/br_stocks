@@ -255,9 +255,7 @@ Try setting the financial statements to individual:
                             AND grupo_dfp = '{self.grupo}'
                             AND dt_fim_exerc >= '{begin_period}'
                     ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn)
-        df["dt_fim_exerc"] = pd.to_datetime(df["dt_fim_exerc"])
-        df = df[df["dt_fim_exerc"] >= begin_period]
+        df = pd.read_sql(query, conn, parse_dates=['dt_fim_exerc'])
         df = Ticker.create_pivot_table(df)
         if plot:
             _plots.bs_plot(df, self.ticker, self.grupo)
@@ -310,10 +308,10 @@ Try setting the financial statements to individual:
                                   WHERE ticker = '{self.ticker}' AND date >= '{begin_period}'
                                   ORDER BY date""",
             conn,
-            index_col="date",
+            index_col="date", parse_dates=['date']
         )
-        prices.index = pd.to_datetime(prices.index)
         return prices
+
 
     def total_shares(self, start_period="all"):
         begin_period = Ticker.get_begin_period(
@@ -353,7 +351,7 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND (ds_conta = 'Resultado Líquido das Operações Continuadas' OR ds_conta = 'Lucro/Prejuízo do Período')
                     ORDER BY dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date")
+        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Líquido das Operações Continuadas"
@@ -363,7 +361,6 @@ Try setting the financial statements to individual:
                 income_statement["ds_conta"] == "Lucro/Prejuízo do Período"
                 ]
         df = df.drop(["ds_conta"], axis=1)
-        df.index = pd.to_datetime(df.index)
         df["quarter_net_income"] = df["ytd_net_income"] - df["ytd_net_income"].shift(1)
         df["quarter_net_income"][df["fiscal_quarter"] == 1] = df["ytd_net_income"][
             df["fiscal_quarter"] == 1
@@ -397,7 +394,7 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND (ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR ds_conta = 'Resultado Operacional')
                     ORDER BY dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date")
+        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
@@ -407,7 +404,6 @@ Try setting the financial statements to individual:
                 income_statement["ds_conta"] == "Resultado Operacional"
                 ]
         df = df.drop(["ds_conta"], axis=1)
-        df.index = pd.to_datetime(df.index)
         df["quarter_ebit"] = df["ytd_ebit"] - df["ytd_ebit"].shift(1)
         df["quarter_ebit"][df["fiscal_quarter"] == 1] = df["ytd_ebit"][
             df["fiscal_quarter"] == 1
@@ -439,8 +435,7 @@ Try setting the financial statements to individual:
                           AND ds_conta = 'Depreciação, Amortização e Exaustão'
                           AND dt_fim_exerc >= '{begin_period}'
                     ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_d_a"] = df["ytd_d_a"] - df["ytd_d_a"].shift(1)
         df["quarter_d_a"][df["fiscal_quarter"] == 1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
         if ttm == True:
@@ -476,8 +471,7 @@ Try setting the financial statements to individual:
                           AND (dre.ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR dre.ds_conta = 'Resultado Operacional')
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                     ORDER BY dre.dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date")
-        income_statement.index = pd.to_datetime(income_statement.index)
+        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
@@ -522,8 +516,7 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND cd_conta = '3.01'
                     ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_revenue"] = df["ytd_revenue"] - df["ytd_revenue"].shift(1)
         df["quarter_revenue"][df["fiscal_quarter"] == 1] = df["ytd_revenue"][
             df["fiscal_quarter"] == 1
@@ -552,8 +545,7 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                     GROUP BY dt_fim_exerc
                     ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
             _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Cash & Equivalents (R$,000) ')
         return df
@@ -569,8 +561,7 @@ Try setting the financial statements to individual:
                       AND dt_fim_exerc >= '{begin_period}'
                 GROUP BY dt_fim_exerc
                 ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
             _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Debt (R$,000) ')
         return df
@@ -593,8 +584,7 @@ Try setting the financial statements to individual:
                             AND date >= '{begin_period}'
                         GROUP BY date
                         ORDER BY date"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
             _plots.line_plot(df, self.ticker, self.grupo, line=' Market Value (R$,000) ')
         return df
@@ -649,8 +639,7 @@ Try setting the financial statements to individual:
                       AND (ds_conta = 'Patrimônio Líquido' OR ds_conta = 'Patrimônio Líquido Consolidado')
                       AND dt_fim_exerc >= '{begin_period}'
                 ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
             _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Equity (R$,000) ')
         return df
@@ -665,8 +654,7 @@ Try setting the financial statements to individual:
                       AND cd_conta = '1' 
                       AND dt_fim_exerc >= '{begin_period}'
                 ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
             _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Assets (R$,000) ')
         return df
@@ -725,9 +713,8 @@ Try setting the financial statements to individual:
                      bpp.ds_conta = 'Passivo Circulante'
                 ORDER BY bpa.dt_fim_exerc""",
             conn,
-            index_col="date",
+            index_col="date", parse_dates=['date']
         )
-        current_ratio.index = pd.to_datetime(current_ratio.index)
         return current_ratio
 
     def gross_profit_margin(self, quarter=True, ytd=True, ttm=True, start_period="all"):
@@ -875,8 +862,7 @@ Try setting the financial statements to individual:
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                           AND dre_revenue.cd_conta = '3.01'
                     ORDER BY dre_ebit.dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date")
-        income_statement.index = pd.to_datetime(income_statement.index)
+        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
@@ -1035,8 +1021,7 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND cd_conta = '6.01'
                     ORDER BY dt_fim_exerc"""
-        df = pd.read_sql(query, conn, index_col="date")
-        df.index = pd.to_datetime(df.index)
+        df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_cfo"] = df["ytd_cfo"] - df["ytd_cfo"].shift(1)
         df["quarter_cfo"][df["fiscal_quarter"] == 1] = df["ytd_cfo"][df["fiscal_quarter"] == 1]
         if ttm == True:
@@ -1210,21 +1195,44 @@ Try setting the financial statements to individual:
             statistics = pd.concat([statistics, df], axis=0)
         return statistics
 
-    def compare_measure(measure, tickers, kwargs):
+    def compare_measure(measure, tickers, kwargs, plot_conparison = True):
+        # check if the tickers in the list are Ticker object or not.
+        # if not, create one
         to_compare = {}
         for i in range(len(tickers)):
             if isinstance(tickers[i], str):
                 to_compare[i] = {"obj": Ticker(tickers[i])}
             else:
                 to_compare[i] = {"obj": tickers[i]}
-        df = pd.DataFrame()
-        for i in range(len(to_compare)):
+
+        # create a dataframe with the result of the measure for the first ticker
+        df = getattr(to_compare[0]["obj"], measure)(**kwargs)
+        if isinstance(df, pd.Series):
+            df = pd.DataFrame(df)
+        df.columns = df.columns + " " + to_compare[0]["obj"].ticker
+        df = df.reset_index()
+
+        # create a dataframe with the result of the measure for each of the next tickers
+        for i in range(1, len(to_compare)):
             result = getattr(to_compare[i]["obj"], measure)(**kwargs)
-            if isinstance(result, pd.DataFrame):
-                result.columns = result.columns + " " + to_compare[i]["obj"].ticker
             if isinstance(result, pd.Series):
-                result = result.rename(result.name + " " + to_compare[i]["obj"].ticker)
-            df = pd.concat([df, result], axis=1)
+                result = pd.DataFrame(result)
+            result.columns = result.columns + " " + to_compare[i]["obj"].ticker
+            result = result.reset_index()
+
+            df = df.merge(result, how='outer', left_on='date', right_on='date')
+        df = df.set_index('date')
+
+        if plot_conparison:
+            # to decide if the plot will be a bar plot or line plot,
+            # infer the frequency of the dataframe. If Quarter, bar plot,
+            # if not, line plot.
+            freq = pd.infer_freq(df.index)
+            if freq is not None:
+                _plots.compare_measure_bar_plot(df)
+            else:
+                _plots.compare_measure_line_plot(df)
+
         return df
 
 

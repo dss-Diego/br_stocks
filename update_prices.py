@@ -105,6 +105,8 @@ def process_file(file):
     df = df[df['ticker'].str[-1:] != 'F']
     df = df[df['ticker'].str[-1].str.isnumeric()]
     df = df[['date', 'ticker', 'number_shares']]
+    df = df[~df[['date', 'ticker']].duplicated()]
+
     for fl in os.listdir(cwd+'\\data\\temp\\'):
         os.remove(cwd+'\\data\\temp\\'+fl)
     return df
@@ -155,13 +157,13 @@ def update_prices():
                     prices = prices[prices['preexe'] == 0]
                     prices['date'] = pd.to_datetime(prices['date'])
                     prices = prices[['date','ticker','preult','totneg','quatot','voltot']]
-                    print("downloaded file with prices from " + str(datetime.datetime.strptime(date, '%d%m%Y').date()))
+                    print("downloaded file with prices of the day " + str(datetime.datetime.strptime(date, '%d%m%Y').date()))
                     shares = get_shares(to_download)
                     df = prices.merge(shares[['ticker', 'number_shares']], how='left', left_on='ticker', right_on='ticker')
                     df.to_sql('prices', conn, if_exists='append', index=False)
-                    print("Sucessfully update prices from "+str(datetime.datetime.strptime(date, '%d%m%Y').date()))
+                    print("Sucessfully update prices of the day "+str(datetime.datetime.strptime(date, '%d%m%Y').date()))
                 except:
-                    print("Day "+str(datetime.datetime.strptime(date, '%d%m%Y').date())+' was not possible to be downloaded. Please try again later.')
+                    print("Prices of the day "+str(datetime.datetime.strptime(date, '%d%m%Y').date())+' were not possible to be downloaded. Please try again later.')
     else:
         print("no updates available.")
     return

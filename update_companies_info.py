@@ -171,7 +171,7 @@ def load_fs():
                 fs = fs[:3]
             itr_dfp = file[0:3] # itr_dfp is used to update the db.
             df = pd.read_csv(
-                cwd + "\\data\\temp\\" + file, sep=";", header=0, encoding="latin-1"
+                cwd + "\\data\\temp\\" + file, sep=";", header=0, encoding="latin-1", parse_dates=['DT_FIM_EXERC']
             )
             if len(df) > 0:
                 df.columns = df.columns.str.lower()
@@ -185,7 +185,6 @@ def load_fs():
                 df = df.drop_duplicates(
                     subset=["cnpj", "dt_fim_exerc", "cd_conta"], keep="first"
                 )
-                df["dt_fim_exerc"] = pd.to_datetime(df["dt_fim_exerc"])
 
                 # Start process the dataframe according to the type of finanacial statement:
                 if fs in ["bpa", "bpp"]:

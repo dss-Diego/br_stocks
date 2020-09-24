@@ -7,6 +7,8 @@ Created on Sat Sep 19 17:06:40 2020
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
+import matplotlib.dates as mdates
+import numpy as np
 
 def bs_plot(df, denom_comerc, grupo):
 
@@ -145,4 +147,37 @@ def line_plot(df, denom_comerc, grupo, line):
     plt.show()
 
 
+def compare_measure_line_plot(df):
+    df= df.sort_index()
+    df = df.ffill()
+    fig, ax = plt.subplots(1,1, figsize=(16,9), facecolor= 'Grey')
+    for i in range(len(df.columns)):
+        ax.plot(df.index, df.iloc[:,i], label= df.columns[i].split()[-1])
+    months = mdates.MonthLocator((4,7,10))
+    month_fmt = mdates.DateFormatter('%m')
+    ax.xaxis.set_minor_locator(months)
+    ax.xaxis.set_minor_formatter(month_fmt)
+    ax.grid(linestyle = '--')
+    ax.grid(which='minor', axis='x', linestyle='-.', linewidth=0.4, color='#e0e0e0')
+    ax.legend(loc='upper left')
+    ax.set_title(df.columns[0].split()[0].upper())
+    plt.tight_layout()
+    plt.show()
+
+def compare_measure_bar_plot(df):
+    df = df.dropna()
+    x_indexes = np.arange(len(df))
+    width = np.min(np.diff(x_indexes))/len(df.columns)
+    fig, ax = plt.subplots(1,1, figsize=(16,9), facecolor='Grey')
+    for i in range(len(df.columns)):
+        ax.bar(x_indexes+(i*width), df.iloc[:,i].values, width=width*.8, align='edge', label=df.columns[i].split()[-1])
+    ax.legend(loc='upper left')
+    ax.set_title(df.columns[0].split()[0].upper())
+    ax.set_xticks(ticks=x_indexes)
+    ax.set_xticklabels(df.index.date, rotation=45, ha='center')
+    ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
+    ax.set_ylabel('R$(,000)')
+    ax.grid(linestyle='--')
+    plt.tight_layout()
+    plt.show()
 
