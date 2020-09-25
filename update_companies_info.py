@@ -5,7 +5,7 @@ This script will do the next steps:
 1 - create necessary directories (if not exists)
 2 - create or connect to a sqlite3 database
 3 - create necessary tables to store companies info in the database (if not exists)
-4 - update tickers table with the ones availabe in  https://raw.githubusercontent.com/dss-Diego/br_stocks/master/tickers.csv
+4 - update tickers table with the ones availabe in  https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/tickers.csv
 5 - check in the CVM website if there are files not yet processed and stored in the database
 6 - in case of new or updated files, will download, process and load new data in the database
 
