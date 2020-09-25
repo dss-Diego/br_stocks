@@ -1,0 +1,9 @@
+pandas
+numpy
+sqlite3
+matplotlib
+zipfile
+wget
+urllib
+bs4
+xml

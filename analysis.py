@@ -37,7 +37,18 @@ update_prices.update_prices()
 
 # %% Functions
 class Ticker:
+    """
+    Attibutes and Methods to analyse stocks traded in B3 -BOLSA BRASIL BALCÃO
+    """
     def __init__(self, ticker, group="consolidated"):
+        """
+        Creates a Ticker Class Object
+        Args:
+            ticker: string
+                string of the ticker
+            group: string
+                Financial statements group. Can be 'consolidated' or 'individual'
+        """
         self.ticker = ticker.upper()
         df = pd.read_sql(
             f"""SELECT cnpj, type, sector, subsector, segment, denom_comerc
@@ -67,6 +78,12 @@ class Ticker:
             pass
 
     def set_group(self, new_group):
+        """
+        To change the financial statement group attibute of a object
+        Args:
+            new_group: string
+                can be 'consolidated' or 'individual'
+        """
         if new_group in ["individual", "consolidado", "consolidated"]:
             if new_group == "individual":
                 self.grupo = "Individual"
@@ -123,6 +140,9 @@ Try setting the financial statements to individual:
             print("new_group needs to be 'consolidated' or 'individual'.")
 
     def get_begin_period(self, function, start_period):
+        """
+        Support method for other methods of the Class
+        """
         if start_period == "all":
             begin_period = pd.to_datetime("1900-01-01")
             return begin_period
@@ -151,6 +171,9 @@ Try setting the financial statements to individual:
         return begin_period
 
     def create_pivot_table(df):
+        """
+        Support method for other methods of the Class
+        """
         ##### Creates a pivot table and add % change columns #####
         # create columns with % change of the values
         # value_types: ytd, quarter_value, ttm_value
@@ -203,6 +226,20 @@ Try setting the financial statements to individual:
         return df
 
     def income_statement(self, quarter=True, ytd=True, ttm=True, start_period="all"):
+        """
+        Creates a dataframe with the income statement of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -240,6 +277,15 @@ Try setting the financial statements to individual:
         return df
 
     def balance_sheet(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the balance sheet statement of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="bp", start_period=start_period
         )
@@ -262,6 +308,20 @@ Try setting the financial statements to individual:
         return df
 
     def cash_flow(self, quarter=True, ytd=True, ttm=True, start_period="all"):
+        """
+        Creates a dataframe with the cash flow statement of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -299,6 +359,9 @@ Try setting the financial statements to individual:
         return df
 
     def prices(self, start_period="all"):
+        """
+        Support method for other methods of the Class
+        """
         begin_period = Ticker.get_begin_period(
             self, function="prices", start_period=start_period
         )
@@ -314,6 +377,9 @@ Try setting the financial statements to individual:
 
 
     def total_shares(self, start_period="all"):
+        """
+        Support method for other methods of the Class
+        """
         begin_period = Ticker.get_begin_period(
             self, function="total_shares", start_period=start_period
         )
@@ -337,6 +403,21 @@ Try setting the financial statements to individual:
         return shares[["total_shares"]]
 
     def net_income(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the net income information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -380,6 +461,21 @@ Try setting the financial statements to individual:
         return df
 
     def ebit(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the ebit information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -421,6 +517,21 @@ Try setting the financial statements to individual:
         return df
 
     def depre_amort(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the depreciationa and amortization information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -451,6 +562,21 @@ Try setting the financial statements to individual:
         return df
 
     def ebitda(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the ebitda information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -502,6 +628,21 @@ Try setting the financial statements to individual:
         return df
 
     def revenue(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the revenue information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -534,6 +675,15 @@ Try setting the financial statements to individual:
         return df
 
     def cash_equi(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the cash and cash equivalents information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="cash_equi", start_period=start_period
         )
@@ -551,6 +701,15 @@ Try setting the financial statements to individual:
         return df
 
     def total_debt(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the total debt information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="total_bebt", start_period=start_period
         )
@@ -567,6 +726,15 @@ Try setting the financial statements to individual:
         return df
 
     def market_value(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the market value information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="market_value", start_period=start_period
         )
@@ -590,6 +758,15 @@ Try setting the financial statements to individual:
         return df
 
     def net_debt(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the net debt information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         total_debt = Ticker.total_debt(self, start_period=start_period)
         cash = Ticker.cash_equi(self, start_period=start_period)
         net_debt = total_debt["total_debt"] - cash["cash_equi"]
@@ -599,6 +776,15 @@ Try setting the financial statements to individual:
         return net_debt
 
     def eps(self, start_period="all"):
+        """
+        Creates a dataframe with the earnings per share(ttm) information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="eps", start_period=start_period
         )
@@ -621,6 +807,15 @@ Try setting the financial statements to individual:
         return eps
 
     def price_earnings(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the price earnings(ttm) information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         prices = Ticker.prices(self, start_period=start_period)
         eps = Ticker.eps(self, start_period=start_period)
         pe = prices["price"] / eps["eps"]
@@ -630,6 +825,15 @@ Try setting the financial statements to individual:
         return pe
 
     def total_equity(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the total equity information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="total_equity", start_period=start_period
         )
@@ -645,6 +849,15 @@ Try setting the financial statements to individual:
         return df
 
     def total_assets(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the total assets information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="total_assets", start_period=start_period
         )
@@ -660,6 +873,15 @@ Try setting the financial statements to individual:
         return df
 
     def roe(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the return on equity information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         ni = Ticker.net_income(
             self, quarter=False, ytd=False, start_period=start_period
         )
@@ -672,6 +894,15 @@ Try setting the financial statements to individual:
         return roe
 
     def roa(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the return on assets information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         ni = Ticker.net_income(
             self, quarter=False, ytd=False, start_period=start_period
         )
@@ -684,6 +915,14 @@ Try setting the financial statements to individual:
         return roa
 
     def debt_to_equity(self, start_period="all"):
+        """
+        Creates a dataframe with the debt to equity information of the object.
+        Args:
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         debt = Ticker.total_debt(self, start_period=start_period)
         equity = Ticker.total_equity(self, start_period=start_period)
         debt_to_equity = debt["total_debt"] / equity["total_equity"]
@@ -691,6 +930,15 @@ Try setting the financial statements to individual:
         return debt_to_equity
 
     def financial_leverage(self, start_period="all"):
+        """
+        Creates a dataframe with the financial leverage (total assets / total equity)
+            information of the object.
+        Args:
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         assets = Ticker.total_assets(self, start_period=start_period)
         equity = Ticker.total_equity(self, start_period=start_period)
         financial_leverage = assets["total_assets"] / equity["total_equity"]
@@ -698,6 +946,14 @@ Try setting the financial statements to individual:
         return financial_leverage
 
     def current_ratio(self, start_period="all"):
+        """
+        Creates a dataframe with the current ratio information of the object.
+        Args:
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         begin_period = Ticker.get_begin_period(
             self, function="current_ratio", start_period=start_period
         )
@@ -718,6 +974,20 @@ Try setting the financial statements to individual:
         return current_ratio
 
     def gross_profit_margin(self, quarter=True, ytd=True, ttm=True, start_period="all"):
+        """
+        Creates a dataframe with the groos profit margin information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -768,6 +1038,20 @@ Try setting the financial statements to individual:
         return df
 
     def net_profit_margin(self, quarter=True, ytd=True, ttm=True, start_period="all"):
+        """
+        Creates a dataframe with the net profit margin information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -833,6 +1117,20 @@ Try setting the financial statements to individual:
         return df
 
     def ebitda_margin(self, quarter=True, ytd=True, ttm=True, start_period="all"):
+        """
+        Creates a dataframe with the ebitda margin information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -910,6 +1208,15 @@ Try setting the financial statements to individual:
         return df * 100
 
     def enterprise_value(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the enterprise value information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         mv = Ticker.market_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
             start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
@@ -923,6 +1230,16 @@ Try setting the financial statements to individual:
         return df
 
     def ev_ebitda(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the enterprise value / ebitda
+            information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         ev = Ticker.enterprise_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
             start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
@@ -938,6 +1255,16 @@ Try setting the financial statements to individual:
         return df
 
     def ev_ebit(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the enterprise value / ebit
+            information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         ev = Ticker.enterprise_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
             start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
@@ -953,6 +1280,14 @@ Try setting the financial statements to individual:
         return df
 
     def bv_share(self, start_period="all"):
+        """
+        Creates a dataframe with the book value per share information of the object.
+        Args:
+            start_period: string
+
+        Returns: pandas dataframe
+
+        """
         shares = Ticker.total_shares(self, start_period=start_period)
         if start_period not in ["last", "all"]:
             start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
@@ -964,6 +1299,16 @@ Try setting the financial statements to individual:
         return df
 
     def price_bv(self, start_period="all", plot=False):
+        """
+        Creates a dataframe with the price / book value
+            information of the object.
+        Args:
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         prices = Ticker.prices(self, start_period=start_period)
         bv = Ticker.bv_share(self, start_period=start_period)
         p_bv = prices["price"] / bv["bv_share"]
@@ -973,6 +1318,15 @@ Try setting the financial statements to individual:
         return p_bv
 
     def cagr_net_income(self, n_years=5):
+        """
+        Return the compound annual growth rate of the net income of the object.
+        Args:
+            n_years: int
+                number of years to consider when calculating
+
+        Returns: float
+
+        """
         final_date = pd.read_sql(
             f"""SELECT dt_fim_exerc 
                        FROM dre 
@@ -990,6 +1344,15 @@ Try setting the financial statements to individual:
         return cagr
 
     def cagr_revenue(self, n_years=5):
+        """
+        Return the compound annual growth rate of the revenue of the object.
+        Args:
+            n_years: int
+                number of years to consider when calculating
+
+        Returns: float
+
+        """
         final_date = pd.read_sql(
             f"""SELECT dt_fim_exerc 
                        FROM dre 
@@ -1007,6 +1370,21 @@ Try setting the financial statements to individual:
         return cagr
 
     def cfo(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
+        """
+        Creates a dataframe with the cash flow from operations information of the object.
+        Args:
+            quarter: boolean
+                includes or not quarter values
+            ytd: boolean
+                includes or not year to date values
+            ttm: boolean
+                includes or not trailing twelve months value
+            start_period: string
+            plot: boolean
+
+        Returns: pandas dataframe
+
+        """
         if self.freq == "A":
             quarter = False
             ttm = False
@@ -1036,7 +1414,13 @@ Try setting the financial statements to individual:
             _plots.bar_plot(df, self.ticker, self.grupo, bars = ' CFO (R$,000) ')
         return df
 
-    def get_pairs(self):
+    def get_peers(self):
+        """
+        Returns the peer companies of the company calling the method.
+        Based on sector, subsector and segment.
+        Returns: list
+
+        """
         query = f"""SELECT ticker 
                     FROM tickers
                     WHERE 
@@ -1047,7 +1431,16 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn)
         return df["ticker"].to_list()
 
-    def statistics(tickers=[]):
+    def statistics(tickers):
+        """
+        Returns a dataframe with several measures for each ticker in the list.
+        Args:
+            tickers: list
+                list with the tickers to compute the metrics.
+                In this list can be passed strings or Ticker Class objects
+        Returns: pandas dataframe
+
+        """
         to_compare = {}
         for i in range(len(tickers)):
             if isinstance(tickers[i], str):
@@ -1192,6 +1585,23 @@ Try setting the financial statements to individual:
         return statistics
 
     def compare_measure(measure, tickers, kwargs, plot_conparison = True):
+        """
+        returns a dataframe with a single measure for all the tickers passed as a list in the
+            tickers argument.
+        Args:
+            measure: string
+                string exactly like the name of the desired method (ie.: 'net_income')
+            tickers: list
+                List with the tickers to compute the metrics.
+                In this list can be passed strings or Ticker Class Objects.
+            kwargs: dictionary
+                kwargs are passed to the method called
+                (ie.: {'quarter': False, 'start_period': '2017'})
+            plot_conparison: boolean
+
+        Returns: pandas dataframe
+
+        """
         # check if the tickers in the list are Ticker object or not.
         # if not, create one
         to_compare = {}
