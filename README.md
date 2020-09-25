@@ -127,7 +127,7 @@ compare_measure = Ticker.compare_measure('price_bv', ['wege3', 'egie3', 'lren3',
 
 ![ROE](/imgs/Figure_15.png)
 
-![comparison](/figs/Figure_22.png)
+![comparison](/imgs/Figure_22.png)
 
  
 ## Please drop me a note with any feedback you have. diegossilveira@outlook.com
