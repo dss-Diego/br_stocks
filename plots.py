@@ -135,6 +135,7 @@ def bar_plot(df, denom_comerc, grupo, bars):
 def line_plot(df, denom_comerc, grupo, line):
     mean = df.iloc[:,0].mean()
     median = df.iloc[:,0].median()
+    df = df.ffill()
     fig, ax = plt.subplots(1,1, figsize=(16,9), facecolor = 'Grey')
     ax.plot(df, label = line)
     xmin, xmax = ax.get_xlim()

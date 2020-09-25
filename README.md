@@ -21,7 +21,7 @@
   * net debt
   * market value
   * earnings per share
-  * price / earnings
+  * price / earnings~~~~~~~~~~~~
   * total equity
   * total assets
   * return on equity (ROE)
