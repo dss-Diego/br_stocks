@@ -69,7 +69,7 @@ def get_last_database_price_date():
     # that takes a lot of time to complete, it will take the last available file with prices in github.
     # Even if the github file is not up to date, it will be much easier to download only the missing files
     else:
-        df = pd.read_csv("https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/all_prices_table.csv")
+        df = pd.read_csv("https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/all_prices_table.csv", parse_dates=['date'])
         df.to_sql('prices', conn, if_exists='replace', index=False)
         query = "SELECT date FROM prices ORDER BY date DESC LIMIT (1)"
         x = pd.read_sql(query, conn)
