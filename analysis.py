@@ -38,7 +38,7 @@ update_prices.update_prices()
 # %% Functions
 class Ticker:
     """
-    Attibutes and Methods to analyse stocks traded in B3 -BOLSA BRASIL BALCÃO
+    Attributes and Methods to analyse stocks traded in B3 -BOLSA BRASIL BALCÃO
     """
     def __init__(self, ticker, group="consolidated"):
         """
@@ -79,7 +79,7 @@ class Ticker:
 
     def set_group(self, new_group):
         """
-        To change the financial statement group attibute of a object
+        To change the financial statement group attribute of a object
         Args:
             new_group: string
                 can be 'consolidated' or 'individual'
