@@ -375,7 +375,6 @@ Try setting the financial statements to individual:
         )
         return prices
 
-
     def total_shares(self, start_period="all"):
         """
         Support method for other methods of the Class
