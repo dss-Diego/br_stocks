@@ -710,7 +710,7 @@ Try setting the financial statements to individual:
 
         """
         begin_period = Ticker.get_begin_period(
-            self, function="total_bebt", start_period=start_period
+            self, function="total_debt", start_period=start_period
         )
         query = f"""SELECT dt_fim_exerc AS date, SUM(vl_conta) AS total_debt 
                 FROM bpp 
