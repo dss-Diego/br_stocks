@@ -2,6 +2,6 @@ pandas
 numpy
 matplotlib
 wget
-urllib
-bs4
-xml
+urllib3
+beautifulsoup4
+lxml
