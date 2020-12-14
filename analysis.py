@@ -5,14 +5,15 @@ Created on Fri Aug 14 13:52:36 2020
 @author: diego
 """
 
-import pandas as pd
 import os
-import plots as _plots
-import numpy as np
 import sqlite3
-import update_prices
-import update_companies_info
 
+import numpy as np
+import pandas as pd
+
+import plots as _plots
+import update_companies_info
+import update_prices
 
 pd.set_option("display.width", 400)
 pd.set_option("display.max_columns", 10)
@@ -22,24 +23,27 @@ cwd = os.getcwd()
 
 if not os.path.exists("data"):
     os.makedirs("data")
-if not os.path.exists("data\\cotahist"):
-    os.makedirs("data\\cotahist")
-if not os.path.exists("data\\ftp_files"):
-    os.makedirs("data\\ftp_files")
-if not os.path.exists("data\\temp"):
-    os.makedirs("data\\temp")
+if not os.path.exists(os.path.join("data", "cotahist")):
+    os.makedirs(os.path.join("data", "cotahist"))
+if not os.path.exists(os.path.join("data", "ftp_files")):
+    os.makedirs(os.path.join("data", "ftp_files"))
+if not os.path.exists(os.path.join("data", "temp")):
+    os.makedirs(os.path.join("data", "temp"))
 
-conn = sqlite3.connect(cwd + "\\data\\finance.db")
+
+conn = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
 db = conn.cursor()
 
 update_companies_info.update_db()
 update_prices.update_prices()
+
 
 # %% Functions
 class Ticker:
     """
     Attributes and Methods to analyse stocks traded in B3 -BOLSA BRASIL BALCÃO
     """
+
     def __init__(self, ticker, group="consolidated"):
         """
         Creates a Ticker Class Object
@@ -121,8 +125,8 @@ class Ticker:
                 dates["date"] = pd.to_datetime(dates["date"])
                 number_of_observations = len(dates)
                 period_of_time = (
-                                         dates.iloc[-1, 0] - dates.iloc[0, 0]
-                                 ) / np.timedelta64(1, "Y")
+                    dates.iloc[-1, 0] - dates.iloc[0, 0]
+                ) / np.timedelta64(1, "Y")
                 if number_of_observations / period_of_time > 1:
                     self.freq = "Q"
                 else:
@@ -180,7 +184,8 @@ Try setting the financial statements to individual:
         first_type = df.columns.get_loc('ds_conta') + 1
         value_types = list(df.columns[first_type:])
         new_columns = [i + " % change" for i in value_types]
-        df[new_columns] = df[value_types].div(df.groupby("cd_conta")[value_types].shift(1))
+        df[new_columns] = df[value_types].div(
+            df.groupby("cd_conta")[value_types].shift(1))
         # the calculation of %change from ytd is different:
         if 'ytd' in value_types:
             shifted_values = df[['dt_fim_exerc', 'cd_conta', 'ytd']]
@@ -206,13 +211,14 @@ Try setting the financial statements to individual:
         df_index = df.reset_index().iloc[:, 0:2]
         df_index.columns = df_index.columns.droplevel(1)
         df_index = df_index.groupby("cd_conta").first()
-        df = df.groupby(level=0, axis=0).sum()  # This groupby adds the duplicated rows
+        # This groupby adds the duplicated rows
+        df = df.groupby(level=0, axis=0).sum()
         # The next two lines add the account description to the dataframe multiIndex
         df["ds_conta"] = df_index["ds_conta"]
         df = df.set_index("ds_conta", append=True)
         # Reorder the multiIndex column levels
         df = df.reorder_levels(order=[1, 0], axis=1)
-        # Due to the command line 'df = df.sort_values([('dt_fim_exerc'), ('value')], 
+        # Due to the command line 'df = df.sort_values([('dt_fim_exerc'), ('value')],
         # axis=1, ascending=False)'
         # the columns are ordered by date descending, and value descending. The pupose
         # here is to set the order as: date descending and value ascending
@@ -221,7 +227,8 @@ Try setting the financial statements to individual:
         for i in range(1, len(df_columns), 2):
             new_order.append(df_columns[i])
             new_order.append(df_columns[i - 1])
-        new_order = pd.MultiIndex.from_tuples(new_order, names=("date", "value"))
+        new_order = pd.MultiIndex.from_tuples(
+            new_order, names=("date", "value"))
         df = df[new_order]
         return df
 
@@ -254,17 +261,18 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn)
-        df["quarter_value"] = df[["cd_conta", "ytd"]].groupby("cd_conta").diff()
+        df["quarter_value"] = df[["cd_conta", "ytd"]
+                                 ].groupby("cd_conta").diff()
         df["quarter_value"][df["fiscal_quarter"] == 1] = df["ytd"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         if ttm == True:
             df["ttm_value"] = (
                 df[["dt_fim_exerc", "cd_conta", "quarter_value"]]
-                    .groupby("cd_conta")
-                    .rolling(window=4, min_periods=4)
-                    .sum()
-                    .reset_index(0, drop=True)
+                .groupby("cd_conta")
+                .rolling(window=4, min_periods=4)
+                .sum()
+                .reset_index(0, drop=True)
             )
         if quarter == False:
             df = df.drop(["quarter_value"], axis=1)
@@ -336,17 +344,18 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn)
-        df["quarter_value"] = df[["cd_conta", "ytd"]].groupby("cd_conta").diff()
+        df["quarter_value"] = df[["cd_conta", "ytd"]
+                                 ].groupby("cd_conta").diff()
         df["quarter_value"][df["fiscal_quarter"] == 1] = df["ytd"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         if ttm:
             df["ttm_value"] = (
                 df[["dt_fim_exerc", "cd_conta", "quarter_value"]]
-                    .groupby("cd_conta")
-                    .rolling(window=4, min_periods=4)
-                    .sum()
-                    .reset_index(0, drop=True)
+                .groupby("cd_conta")
+                .rolling(window=4, min_periods=4)
+                .sum()
+                .reset_index(0, drop=True)
             )
         if not quarter:
             df = df.drop(["quarter_value"], axis=1)
@@ -394,7 +403,8 @@ Try setting the financial statements to individual:
                         ORDER BY date"""
             nshares_pn = pd.read_sql(query, conn)
             shares = nshares_on.merge(nshares_pn, how="left")
-            shares["total_shares"] = shares["on_shares"] + shares["pn_shares"].fillna(0)
+            shares["total_shares"] = shares["on_shares"] + \
+                shares["pn_shares"].fillna(0)
         except:
             shares = nshares_on.rename({"on_shares": "total_shares"}, axis=1)
         shares.index = shares["date"]
@@ -431,20 +441,22 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND (ds_conta = 'Resultado Líquido das Operações Continuadas' OR ds_conta = 'Lucro/Prejuízo do Período')
                     ORDER BY dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
+        income_statement = pd.read_sql(
+            query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Líquido das Operações Continuadas"
-            ]
+        ]
         if len(df) == 0:
             df = income_statement[
                 income_statement["ds_conta"] == "Lucro/Prejuízo do Período"
-                ]
+            ]
         df = df.drop(["ds_conta"], axis=1)
-        df["quarter_net_income"] = df["ytd_net_income"] - df["ytd_net_income"].shift(1)
+        df["quarter_net_income"] = df["ytd_net_income"] - \
+            df["ytd_net_income"].shift(1)
         df["quarter_net_income"][df["fiscal_quarter"] == 1] = df["ytd_net_income"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         if ttm == True:
             df["ttm_net_income"] = (
                 df["quarter_net_income"].rolling(window=4, min_periods=4).sum()
@@ -456,7 +468,8 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Net Income (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Net Income (R$,000) ')
         return df
 
     def ebit(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -489,22 +502,24 @@ Try setting the financial statements to individual:
                           AND dt_fim_exerc >= '{begin_period}'
                           AND (ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR ds_conta = 'Resultado Operacional')
                     ORDER BY dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
+        income_statement = pd.read_sql(
+            query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
-            ]
+        ]
         if len(df) == 0:
             df = income_statement[
                 income_statement["ds_conta"] == "Resultado Operacional"
-                ]
+            ]
         df = df.drop(["ds_conta"], axis=1)
         df["quarter_ebit"] = df["ytd_ebit"] - df["ytd_ebit"].shift(1)
         df["quarter_ebit"][df["fiscal_quarter"] == 1] = df["ytd_ebit"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         if ttm == True:
-            df["ttm_ebit"] = df["quarter_ebit"].rolling(window=4, min_periods=4).sum()
+            df["ttm_ebit"] = df["quarter_ebit"].rolling(
+                window=4, min_periods=4).sum()
         if quarter == False:
             df = df.drop(["quarter_ebit"], axis=1)
         if ytd == False:
@@ -512,7 +527,8 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' EBIT (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' EBIT (R$,000) ')
         return df
 
     def depre_amort(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -547,9 +563,11 @@ Try setting the financial statements to individual:
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_d_a"] = df["ytd_d_a"] - df["ytd_d_a"].shift(1)
-        df["quarter_d_a"][df["fiscal_quarter"] == 1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
+        df["quarter_d_a"][df["fiscal_quarter"] ==
+                          1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
         if ttm == True:
-            df["ttm_d_a"] = df["quarter_d_a"].rolling(window=4, min_periods=4).sum()
+            df["ttm_d_a"] = df["quarter_d_a"].rolling(
+                window=4, min_periods=4).sum()
         if quarter == False:
             df = df.drop(["quarter_d_a"], axis=1)
         if ytd == False:
@@ -557,7 +575,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' D&A (R$,000)')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars=' D&A (R$,000)')
         return df
 
     def ebitda(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -596,34 +614,39 @@ Try setting the financial statements to individual:
                           AND (dre.ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR dre.ds_conta = 'Resultado Operacional')
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                     ORDER BY dre.dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
+        income_statement = pd.read_sql(
+            query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
-            ]
+        ]
         if len(df) == 0:
             df = income_statement[
                 income_statement["ds_conta"] == "Resultado Operacional"
-                ]
+            ]
         df["ebit"] = df["ytd_ebit"] - df["ytd_ebit"].shift(1)
         df["ebit"][df["fiscal_quarter"] == 1] = df["ytd_ebit"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["d_a"] = df["ytd_d_a"] - df["ytd_d_a"].shift(1)
-        df["d_a"][df["fiscal_quarter"] == 1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
+        df["d_a"][df["fiscal_quarter"] ==
+                  1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
         df["quarter_ebitda"] = df["ebit"] - df["d_a"]
         if ttm == True:
-            df["ttm_ebitda"] = df["quarter_ebitda"].rolling(window=4, min_periods=4).sum()
+            df["ttm_ebitda"] = df["quarter_ebitda"].rolling(
+                window=4, min_periods=4).sum()
         if quarter == False:
             df = df.drop(["quarter_ebitda"], axis=1)
         if ytd == True:
             df["ytd_ebitda"] = df["ytd_ebit"] - df["ytd_d_a"]
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(
-            columns=["fiscal_quarter", "ds_conta", "ytd_ebit", "ytd_d_a", "d_a", "ebit"]
+            columns=["fiscal_quarter", "ds_conta",
+                     "ytd_ebit", "ytd_d_a", "d_a", "ebit"]
         )
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' EBITDA (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' EBITDA (R$,000) ')
         return df
 
     def revenue(self, quarter=True, ytd=True, ttm=True, start_period="all", plot=False):
@@ -660,9 +683,10 @@ Try setting the financial statements to individual:
         df["quarter_revenue"] = df["ytd_revenue"] - df["ytd_revenue"].shift(1)
         df["quarter_revenue"][df["fiscal_quarter"] == 1] = df["ytd_revenue"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         if ttm == True:
-            df["ttm_revenue"] = df["quarter_revenue"].rolling(window=4, min_periods=4).sum()
+            df["ttm_revenue"] = df["quarter_revenue"].rolling(
+                window=4, min_periods=4).sum()
         if quarter == False:
             df = df.drop(["quarter_revenue"], axis=1)
         if ytd == False:
@@ -670,7 +694,8 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Revenue (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Revenue (R$,000) ')
         return df
 
     def cash_equi(self, start_period="all", plot=False):
@@ -696,7 +721,8 @@ Try setting the financial statements to individual:
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Cash & Equivalents (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Cash & Equivalents (R$,000) ')
         return df
 
     def total_debt(self, start_period="all", plot=False):
@@ -721,7 +747,8 @@ Try setting the financial statements to individual:
                 ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Debt (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Total Debt (R$,000) ')
         return df
 
     def market_value(self, start_period="all", plot=False):
@@ -753,7 +780,8 @@ Try setting the financial statements to individual:
                         ORDER BY date"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
-            _plots.line_plot(df, self.ticker, self.grupo, line=' Market Value (R$,000) ')
+            _plots.line_plot(df, self.ticker, self.grupo,
+                             line=' Market Value (R$,000) ')
         return df
 
     def net_debt(self, start_period="all", plot=False):
@@ -771,7 +799,8 @@ Try setting the financial statements to individual:
         net_debt = total_debt["total_debt"] - cash["cash_equi"]
         net_debt.rename("net_debt", axis=1, inplace=True)
         if plot:
-            _plots.bar_plot(pd.DataFrame(net_debt), self.ticker, self.grupo, bars = ' Net Debt (R$,000) ')
+            _plots.bar_plot(pd.DataFrame(net_debt), self.ticker,
+                            self.grupo, bars=' Net Debt (R$,000) ')
         return net_debt
 
     def eps(self, start_period="all"):
@@ -820,7 +849,8 @@ Try setting the financial statements to individual:
         pe = prices["price"] / eps["eps"]
         pe.rename("p_e", inplace=True)
         if plot:
-            _plots.line_plot(pd.DataFrame(pe), self.ticker, self.grupo, line=' Price/Earnings ')
+            _plots.line_plot(pd.DataFrame(pe), self.ticker,
+                             self.grupo, line=' Price/Earnings ')
         return pe
 
     def total_equity(self, start_period="all", plot=False):
@@ -844,7 +874,8 @@ Try setting the financial statements to individual:
                 ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Equity (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Total Equity (R$,000) ')
         return df
 
     def total_assets(self, start_period="all", plot=False):
@@ -868,7 +899,8 @@ Try setting the financial statements to individual:
                 ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' Total Assets (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo,
+                            bars=' Total Assets (R$,000) ')
         return df
 
     def roe(self, start_period="all", plot=False):
@@ -889,7 +921,8 @@ Try setting the financial statements to individual:
         roe.rename("roe", inplace=True)
         roe = roe.dropna()
         if plot:
-            _plots.bar_plot(pd.DataFrame(roe), self.ticker, self.grupo, bars = ' ROE (%) ')
+            _plots.bar_plot(pd.DataFrame(roe), self.ticker,
+                            self.grupo, bars=' ROE (%) ')
         return roe
 
     def roa(self, start_period="all", plot=False):
@@ -910,7 +943,8 @@ Try setting the financial statements to individual:
         roa.rename("roa", inplace=True)
         roa = roa.dropna()
         if plot:
-            _plots.bar_plot(pd.DataFrame(roa), self.ticker, self.grupo, bars = ' ROA (%) ')
+            _plots.bar_plot(pd.DataFrame(roa), self.ticker,
+                            self.grupo, bars=' ROA (%) ')
         return roa
 
     def debt_to_equity(self, start_period="all"):
@@ -1008,20 +1042,23 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         df["ytd_gross_profit_margin"] = df["ytd_gross_profit"] / df["ytd_revenue"]
         df["revenue"] = df["ytd_revenue"] - df["ytd_revenue"].shift(1)
-        df["gross_profit"] = df["ytd_gross_profit"] - df["ytd_gross_profit"].shift(1)
+        df["gross_profit"] = df["ytd_gross_profit"] - \
+            df["ytd_gross_profit"].shift(1)
         df["revenue"][df["fiscal_quarter"] == 1] = df["ytd_revenue"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["gross_profit"][df["fiscal_quarter"] == 1] = df["ytd_gross_profit"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["gross_profit_margin"] = df["gross_profit"] / df["revenue"]
         if ttm == True:
-            df["ttm_revenue"] = df["revenue"].rolling(window=4, min_periods=4).sum()
+            df["ttm_revenue"] = df["revenue"].rolling(
+                window=4, min_periods=4).sum()
             df["ttm_gross_profit"] = (
                 df["gross_profit"].rolling(window=4, min_periods=4).sum()
             )
-            df["ttm_gross_profit_margin"] = df["ttm_gross_profit"] / df["ttm_revenue"]
+            df["ttm_gross_profit_margin"] = df["ttm_gross_profit"] / \
+                df["ttm_revenue"]
             df = df.drop(["ttm_revenue", "ttm_gross_profit"], axis=1)
         if quarter == False:
             df = df.drop(["gross_profit_margin"], axis=1)
@@ -1072,23 +1109,24 @@ Try setting the financial statements to individual:
         df = pd.read_sql(query, conn, index_col="date")
         net_income = df["ytd_net_income"][
             df["ds_conta"] == "Resultado Líquido das Operações Continuadas"
-            ]
+        ]
         if len(df) == 0:
             net_income = df["ytd_net_income"][
                 df["ds_conta"] == "Lucro/Prejuízo do Período"
-                ]
+            ]
         df["ytd_net_profit_margin"] = net_income / df["ytd_revenue"]
         df["revenue"] = df["ytd_revenue"] - df["ytd_revenue"].shift(1)
         df["net_income"] = df["ytd_net_income"] - df["ytd_net_income"].shift(1)
         df["revenue"][df["fiscal_quarter"] == 1] = df["ytd_revenue"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["net_income"][df["fiscal_quarter"] == 1] = df["ytd_net_income"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["net_profit_margin"] = df["net_income"] / df["revenue"]
         if ttm == True:
-            df["ttm_revenue"] = df["revenue"].rolling(window=4, min_periods=4).sum()
+            df["ttm_revenue"] = df["revenue"].rolling(
+                window=4, min_periods=4).sum()
             df["ttm_net_income"] = (
                 df["net_income"].rolling(window=4, min_periods=4).sum()
             )
@@ -1159,29 +1197,33 @@ Try setting the financial statements to individual:
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                           AND dre_revenue.cd_conta = '3.01'
                     ORDER BY dre_ebit.dt_fim_exerc"""
-        income_statement = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
+        income_statement = pd.read_sql(
+            query, conn, index_col="date", parse_dates=['date'])
         df = income_statement[
             income_statement["ds_conta"]
             == "Resultado Antes do Resultado Financeiro e dos Tributos"
-            ]
+        ]
         if len(df) == 0:
             df = income_statement[
                 income_statement["ds_conta"] == "Resultado Operacional"
-                ]
+            ]
         df["revenue"] = df["ytd_revenue"] - df["ytd_revenue"].shift(1)
         df["revenue"][df["fiscal_quarter"] == 1] = df["ytd_revenue"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["ebit"] = df["ytd_ebit"] - df["ytd_ebit"].shift(1)
         df["ebit"][df["fiscal_quarter"] == 1] = df["ytd_ebit"][
             df["fiscal_quarter"] == 1
-            ]
+        ]
         df["d_a"] = df["ytd_d_a"] - df["ytd_d_a"].shift(1)
-        df["d_a"][df["fiscal_quarter"] == 1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
+        df["d_a"][df["fiscal_quarter"] ==
+                  1] = df["ytd_d_a"][df["fiscal_quarter"] == 1]
         df["ebitda"] = df["ebit"] - df["d_a"]
         if ttm == True:
-            df["ttm_ebitda"] = df["ebitda"].rolling(window=4, min_periods=4).sum()
-            df["ttm_revenue"] = df["revenue"].rolling(window=4, min_periods=4).sum()
+            df["ttm_ebitda"] = df["ebitda"].rolling(
+                window=4, min_periods=4).sum()
+            df["ttm_revenue"] = df["revenue"].rolling(
+                window=4, min_periods=4).sum()
             df["ttm_ebitda_margin"] = df["ttm_ebitda"] / df["ttm_revenue"]
             df.drop(columns=["ttm_ebitda", "ttm_revenue"], inplace=True)
         if quarter == True:
@@ -1218,14 +1260,16 @@ Try setting the financial statements to individual:
         """
         mv = Ticker.market_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
-            start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
+            start_period = pd.to_datetime(
+                start_period) + pd.DateOffset(months=-7)
         nd = Ticker.net_debt(self, start_period=start_period)
         df = mv.merge(nd, how="outer", left_index=True, right_index=True)
         df = df.ffill()
         df["ev"] = df["market_value"] + (df["net_debt"] * 1000)
         df = df[['ev']].dropna()
         if plot:
-            _plots.line_plot(df, self.ticker, self.grupo, line=' Enterprise Value (R$,000) ')
+            _plots.line_plot(df, self.ticker, self.grupo,
+                             line=' Enterprise Value (R$,000) ')
         return df
 
     def ev_ebitda(self, start_period="all", plot=False):
@@ -1241,7 +1285,8 @@ Try setting the financial statements to individual:
         """
         ev = Ticker.enterprise_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
-            start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
+            start_period = pd.to_datetime(
+                start_period) + pd.DateOffset(months=-7)
         ebitda = Ticker.ebitda(
             self, quarter=False, ytd=False, ttm=True, start_period=start_period
         )
@@ -1266,7 +1311,8 @@ Try setting the financial statements to individual:
         """
         ev = Ticker.enterprise_value(self, start_period=start_period)
         if start_period not in ["last", "all"]:
-            start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
+            start_period = pd.to_datetime(
+                start_period) + pd.DateOffset(months=-7)
         ebit = Ticker.ebit(
             self, quarter=False, ytd=False, ttm=True, start_period=start_period
         )
@@ -1289,9 +1335,11 @@ Try setting the financial statements to individual:
         """
         shares = Ticker.total_shares(self, start_period=start_period)
         if start_period not in ["last", "all"]:
-            start_period = pd.to_datetime(start_period) + pd.DateOffset(months=-7)
+            start_period = pd.to_datetime(
+                start_period) + pd.DateOffset(months=-7)
         equity = Ticker.total_equity(self, start_period=start_period)
-        df = shares.merge(equity, how="outer", left_index=True, right_index=True)
+        df = shares.merge(equity, how="outer",
+                          left_index=True, right_index=True)
         df = df.ffill()
         df["bv_share"] = (df["total_equity"] / df["total_shares"]) * 1000
         df = df[['bv_share']].dropna()
@@ -1313,7 +1361,8 @@ Try setting the financial statements to individual:
         p_bv = prices["price"] / bv["bv_share"]
         p_bv.rename("p_bv", inplace=True)
         if plot:
-            _plots.line_plot(pd.DataFrame(p_bv), self.ticker, self.grupo, line=' Price/BV ')
+            _plots.line_plot(pd.DataFrame(p_bv), self.ticker,
+                             self.grupo, line=' Price/BV ')
         return p_bv
 
     def cagr_net_income(self, n_years=5):
@@ -1400,9 +1449,11 @@ Try setting the financial statements to individual:
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_cfo"] = df["ytd_cfo"] - df["ytd_cfo"].shift(1)
-        df["quarter_cfo"][df["fiscal_quarter"] == 1] = df["ytd_cfo"][df["fiscal_quarter"] == 1]
+        df["quarter_cfo"][df["fiscal_quarter"] ==
+                          1] = df["ytd_cfo"][df["fiscal_quarter"] == 1]
         if ttm == True:
-            df["ttm_cfo"] = df["quarter_cfo"].rolling(window=4, min_periods=4).sum()
+            df["ttm_cfo"] = df["quarter_cfo"].rolling(
+                window=4, min_periods=4).sum()
         if quarter == False:
             df = df.drop(["quarter_cfo"], axis=1)
         if ytd == False:
@@ -1410,7 +1461,7 @@ Try setting the financial statements to individual:
         df = df[df.index >= begin_period + pd.DateOffset(months=12)]
         df = df.drop(columns=["fiscal_quarter"])
         if plot:
-            _plots.bar_plot(df, self.ticker, self.grupo, bars = ' CFO (R$,000) ')
+            _plots.bar_plot(df, self.ticker, self.grupo, bars=' CFO (R$,000) ')
         return df
 
     def get_peers(self):
@@ -1448,11 +1499,14 @@ Try setting the financial statements to individual:
                 to_compare[i] = {"obj": tickers[i]}
         statistics = pd.DataFrame()
         for i in range(len(to_compare)):
-            p_e = Ticker.price_earnings(to_compare[i]["obj"], start_period="last")
-            ev_ebitda = Ticker.ev_ebitda(to_compare[i]["obj"], start_period="last")
+            p_e = Ticker.price_earnings(
+                to_compare[i]["obj"], start_period="last")
+            ev_ebitda = Ticker.ev_ebitda(
+                to_compare[i]["obj"], start_period="last")
             p_bv = Ticker.price_bv(to_compare[i]["obj"], "last")
             ev_ebit = Ticker.ev_ebit(to_compare[i]["obj"], start_period="last")
-            bv_share = Ticker.bv_share(to_compare[i]["obj"], start_period="last")
+            bv_share = Ticker.bv_share(
+                to_compare[i]["obj"], start_period="last")
             eps = Ticker.eps(to_compare[i]["obj"], start_period="last")
             gross_profit_margin = Ticker.gross_profit_margin(
                 to_compare[i]["obj"],
@@ -1473,13 +1527,19 @@ Try setting the financial statements to individual:
             debt_to_equity = Ticker.debt_to_equity(
                 to_compare[i]["obj"], start_period="last"
             )
-            equity = Ticker.total_equity(to_compare[i]["obj"], start_period="last")
-            assets = Ticker.total_assets(to_compare[i]["obj"], start_period="last")
-            total_debt = Ticker.total_debt(to_compare[i]["obj"], start_period="last")
-            cash_equi = Ticker.cash_equi(to_compare[i]["obj"], start_period="last")
-            net_debt = Ticker.net_debt(to_compare[i]["obj"], start_period="last")
+            equity = Ticker.total_equity(
+                to_compare[i]["obj"], start_period="last")
+            assets = Ticker.total_assets(
+                to_compare[i]["obj"], start_period="last")
+            total_debt = Ticker.total_debt(
+                to_compare[i]["obj"], start_period="last")
+            cash_equi = Ticker.cash_equi(
+                to_compare[i]["obj"], start_period="last")
+            net_debt = Ticker.net_debt(
+                to_compare[i]["obj"], start_period="last")
             mv = Ticker.market_value(to_compare[i]["obj"], start_period="last")
-            ev = Ticker.enterprise_value(to_compare[i]["obj"], start_period="last")
+            ev = Ticker.enterprise_value(
+                to_compare[i]["obj"], start_period="last")
             ebitda = Ticker.ebitda(
                 to_compare[i]["obj"],
                 quarter=False,
@@ -1572,7 +1632,8 @@ Try setting the financial statements to individual:
             df["cagr_net_income"] = Ticker.cagr_net_income(
                 to_compare[i]["obj"], n_years=5
             )
-            df["cagr_revenue"] = Ticker.cagr_revenue(to_compare[i]["obj"], n_years=5)
+            df["cagr_revenue"] = Ticker.cagr_revenue(
+                to_compare[i]["obj"], n_years=5)
             df["date"] = max(df["date"])
             df = df.groupby("date").max()
             df = df.reset_index()
@@ -1583,7 +1644,7 @@ Try setting the financial statements to individual:
             statistics = pd.concat([statistics, df], axis=0)
         return statistics
 
-    def compare_measure(measure, tickers, kwargs, plot_conparison = True):
+    def compare_measure(measure, tickers, kwargs, plot_conparison=True):
         """
         returns a dataframe with a single measure for all the tickers passed as a list in the
             tickers argument.
@@ -1642,4 +1703,3 @@ Try setting the financial statements to individual:
 
 
 # %%
-
