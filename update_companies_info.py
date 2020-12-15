@@ -22,24 +22,24 @@ from bs4 import BeautifulSoup
 cwd = os.getcwd()
 if not os.path.exists("data"):
     os.makedirs("data")
-if not os.path.exists("data\\cotahist"):
-    os.makedirs("data\\cotahist")
-if not os.path.exists("data\\ftp_files"):
-    os.makedirs("data\\ftp_files")
-if not os.path.exists("data\\temp"):
-    os.makedirs("data\\temp")
+if not os.path.exists(os.path.join("data", "cotahist")):
+    os.makedirs(os.path.join("data", "cotahist"))
+if not os.path.exists(os.path.join("data", "ftp_files")):
+    os.makedirs(os.path.join("data", "ftp_files"))
+if not os.path.exists(os.path.join("data", "temp")):
+    os.makedirs(os.path.join("data", "temp"))
 conn = sqlite3.connect(cwd + "\\data\\finance.db")
-db = conn.cursor()
+cur = conn.cursor()
 
 #%% functions
 def create_tables():
-    db.execute(
+    cur.execute(
         """CREATE TABLE IF NOT EXISTS files
                    (file_name TEXT,
                     last_modified DATE)"""
     )
     for fs in ["bpa", "bpp"]:
-        db.execute(
+        cur.execute(
             f"""CREATE TABLE IF NOT EXISTS {fs}
                        (cnpj TEXT, 
                         dt_refer INTEGER, 
@@ -51,7 +51,7 @@ def create_tables():
                         itr_dfp TEXT)"""
         )
     for fs in ["dre", "dva", "dfc"]:
-        db.execute(
+        cur.execute(
             f"""CREATE TABLE IF NOT EXISTS {fs}
                        (cnpj TEXT, 
                         dt_refer INTEGER, 
@@ -64,7 +64,7 @@ def create_tables():
                         itr_dfp TEXT, 
                         fiscal_quarter INTEGER)"""
         )
-    db.execute(
+    cur.execute(
         """CREATE TABLE IF NOT EXISTS dmpl
                    (cnpj TEXT, 
                     dt_refer INTEGER, 
@@ -78,7 +78,7 @@ def create_tables():
                     itr_dfp TEXT, 
                     fiscal_quarter INTEGER)"""
     )
-    db.execute(
+    cur.execute(
         """CREATE TABLE IF NOT EXISTS tickers
                    (ticker TEXT, 
                     cnpj TEXT, 
@@ -99,7 +99,7 @@ def update_db():
 
     # Update tickers registers with data from github
     tickers = pd.read_csv('https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/tickers.csv')
-    db.execute('DELETE FROM tickers')
+    cur.execute('DELETE FROM tickers')
     conn.commit()
     tickers.to_sql('tickers', conn, if_exists='replace', index=False)
 
@@ -153,14 +153,14 @@ def update_db():
         with zipfile.ZipFile(file_name, "r") as zip_ref:
             zip_ref.extractall()
         os.remove(file_name)
-        db.execute(
+        cur.execute(
             f"""DELETE FROM files
                        WHERE file_name = '{file['file_name']}'"""
         )
         # 2 - update database with the zip file content
         load_fs()
         # 3 - update database with the new file information
-        db.execute(
+        cur.execute(
             f"""INSERT INTO files 
                        VALUES ('{file['file_name']}', '{file['url_date']}')"""
         )
@@ -260,7 +260,7 @@ def load_fs():
                         ]
                 df["vl_conta"][df["escala_moeda"] == "UNIDADE"] = df["vl_conta"] / 1000
                 df.drop(columns=["escala_moeda"], inplace=True)
-                db.execute(
+                cur.execute(
                     f"""DELETE FROM {fs} 
                                WHERE dt_refer = {dt_refer} AND 
                                     itr_dfp = '{itr_dfp}' AND 

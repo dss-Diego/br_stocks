@@ -40,7 +40,7 @@ if not os.path.exists(os.path.join("data", "temp")):
     os.makedirs(os.path.join("data", "temp"))
 
 conn = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
-db = conn.cursor()
+cur = conn.cursor()
 # %% functions
 
 
@@ -56,7 +56,7 @@ def create_prices():
          voltot INTEGER,
          number_shares INTEGER
     )"""
-    db.execute(query)
+    cur .execute(query)
     return
 
 

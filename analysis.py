@@ -32,7 +32,7 @@ if not os.path.exists(os.path.join("data", "temp")):
 
 
 conn = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
-db = conn.cursor()
+cur = conn.cursor()
 
 update_companies_info.update_db()
 update_prices.update_prices()
