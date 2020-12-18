@@ -1,160 +1,4 @@
 ticker,cnpj,type,sector,subsector,segment,denom_social,denom_comerc
-REDE4,61.584.140/0001-49,PN,Utilities,Electric Utilities,Electric Utilities,REDE ENERGIA PARTICIPAÇÕES S.A.,REDE ENERGIA PARTICIPAÇÕES S.A.
-VALE5,33.592.510/0001-54,PNA,Basic Materials,Mining,Metalic Minerals,VALE S.A.,VALE
-UNID3,04.437.534/0001-30,ON,Consumer Cyclical,Diversified,Car Rental,UNIDAS S/A,UNIDAS S/A
-VVAR11,33.041.260/0652-90,UNT,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
-BMGB11,61.186.680/0001-74,UNT,Financial,Financial Intermediaries,Banks,BANCO BMG S/A,BANCO BMG S/A
-SMFT20,07.594.978/0001-78,M2,Consumer Cyclical,"Travel, Entertainment and Leisure",Sports,SMARTFIT ESCOLA DE GINÁSTICA E DANÇA S.A.,SMARTFIT ESCOLA DE GINÁSTICA E DANÇA S.A.
-HETA3,92.749.225/0001-63,ON,Consumer Cyclical,Household Products,Houseware Utensils,HERCULES S/A - FABRICA DE TALHERES,HERCULES S/A
-HETA4,92.749.225/0001-63,PN,Consumer Cyclical,Household Products,Houseware Utensils,HERCULES S/A - FABRICA DE TALHERES,HERCULES S/A
-LIPR3,01.104.937/0001-70,ON,Utilities,Electric Utilities,Electric Utilities,ELETROBRÁS PARTICIPAÇÕES S.A. - ELETROPAR,ELETROPAR
-BKBR3,13.574.594/0001-96,ON,Consumer Cyclical,Hotels and Restaurants,Restaurants and Similars,BK BRASIL OPERAÇÃO E ASSESSORIA A RESTAURANTES S.A.,
-CAML3,64.904.295/0001-03,ON,Consumer Non Cyclical,Food Processors,Other Food Manufacturing,CAMIL ALIMENTOS S/A,CAMIL ALIMENTOS S/A
-PRIO3,10.629.105/0001-68,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",PETRO RIO S.A.,PETRO RIO S.A.
-IGTA3,51.218.147/0001-93,ON,Financial,Real Estate,Real Estate,IGUATEMI EMPRESA DE SHOPPING CENTERS S/A,IGUATEMI EMPRESA DE SHOPPING CENTERS S/A
-GGBR3,33.611.500/0001-19,ON,Basic Materials,Steel and Metalurgy,Steel,GERDAU S.A.,GERDAU S.A.
-GGBR4,33.611.500/0001-19,PN,Basic Materials,Steel and Metalurgy,Steel,GERDAU S.A.,GERDAU S.A.
-CPRE3,08.439.659/0001-50,ON,Utilities,Electric Utilities,Electric Utilities,CPFL ENERGIAS RENOVÁVEIS S.A.,CPFL RENOVÁVEIS
-PSVM11,18.494.485/0001-82,TPR,Capital Goods and Services,Transportation,Warehousing and Storage,PORTO SUDESTE V.M. S.A.,PORTO SUDESTE V.M. S.A.
-BIDI4,00.416.968/0001-01,PN,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
-DTCY4,03.303.999/0001-36,PN,Capital Goods and Services,Diversified Services,Diversified Services,DTCOM - DIRECT TO COMPANY S.A.,DTCOM
-BIDI3,00.416.968/0001-01,ON,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
-DTCY3,03.303.999/0001-36,ON,Capital Goods and Services,Diversified Services,Diversified Services,DTCOM - DIRECT TO COMPANY S.A.,DTCOM
-VIVT4,02.558.157/0001-62,PN,Communications,Telecommunications,Telecommunications,TELEFÔNICA BRASIL S.A.,TELEFÔNICA BRASIL
-VIVT3,02.558.157/0001-62,ON,Communications,Telecommunications,Telecommunications,TELEFÔNICA BRASIL S.A.,TELEFÔNICA BRASIL
-CRDE3,07.820.907/0001-46,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CR2 EMPREENDIMENTOS IMOBILIÁRIOS S/A,CR2 EMPREENDIMENTOS IMOBILIÁRIOS S/A
-BIDI11,00.416.968/0001-01,UNT,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
-PARD3,19.378.769/0001-76,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,INSTITUTO HERMES PARDINI S/A,INSTITUTO HERMES PARDINI S/A
-SULA11,29.978.814/0001-87,UNT,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
-CTSA4,21.255.567/0001-89,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
-CTSA3,21.255.567/0001-89,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
-CTSA8,21.255.567/0001-89,PND,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
-WIZS3,42.278.473/0001-03,ON,Financial,"Insurance, Life and Multi-line",Insurance Brokers,WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S.A.,WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S.A.
-B3SA3,09.346.601/0001-25,ON,Financial,Diversified Financial Services,Diversified Financial Services,"B3 S.A. - BRASIL, BOLSA, BALCÃO",BM&F BOVESPA S/A
-ENEV3,04.423.567/0001-21,ON,Utilities,Electric Utilities,Electric Utilities,ENEVA S.A.,ENEVA SA
-HYPE3,02.932.074/0001-91,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,HYPERA S/A,HYPERA PHARMA S/A
-SULA4,29.978.814/0001-87,PN,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
-TRIS3,08.811.643/0001-27,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,TRISUL S/A,TRISUL
-RDNI3,67.010.660/0001-24,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,RNI NEGÓCIOS IMOBILIÁRIOS S.A.,RODOBENS NEGOCIOS IMOBILIARIOS SA
-MNDL3,88.610.191/0001-54,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Accessories,MUNDIAL S.A - PRODUTOS DE CONSUMO,MUNDIAL
-UNIP5,33.958.695/0001-78,PNA,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
-CCRO3,02.846.056/0001-97,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,CCR S.A.,CCR S.A.
-UNIP3,33.958.695/0001-78,ON,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
-UNIP6,33.958.695/0001-78,PNB,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
-RADL3,61.585.865/0001-51,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,RAIA DROGASIL S.A.,DROGASIL SA
-ENAT3,11.669.021/0001-10,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",ENAUTA PARTICIPAÇÕES S.A.,QGEP PARTICIPAÇÕES SA
-WHRL3,59.105.999/0001-86,ON,Consumer Cyclical,Household Products,Household Appliance,WHIRLPOOL S.A,WHIRLPOOL S.A
-WHRL4,59.105.999/0001-86,PN,Consumer Cyclical,Household Products,Household Appliance,WHIRLPOOL S.A,WHIRLPOOL S.A
-DMMO3,08.926.302/0001-05,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",DOMMO ENERGIA S.A.,OGX PETRÓLEO E GÁS S.A.
-SULA3,29.978.814/0001-87,ON,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
-CARD3,01.896.779/0001-38,ON,Capital Goods and Services,Diversified Services,Diversified Services,CSU CARDSYSTEM S/A,CSU CARDSYSTEM S/A
-MILS3,27.093.558/0001-15,ON,Capital Goods and Services,Construction and Engineering ,Diversified Services,MILLS ESTRUTURAS E SERVIÇOS DE ENGENHARIA S/A,MILLS ESTRUTURAS E SERVIÇOS DE ENGENHARIA S/A
-SUZB3,16.404.287/0001-55,ON,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO S.A.,SUZANO PAPEL E CELULOSE SA
-VULC3,50.926.955/0001-42,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Footwear,VULCABRAS|AZALEIA S.A.,VULCABRAS S/A.
-ANIM3,09.288.252/0001-32,ON,Consumer Cyclical,Diversified,Educational Services,ANIMA HOLDING S/A,
-CRPG6,15.115.504/0001-24,PNB,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
-NEMO6,60.651.809/0001-05,PNB,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO HOLDING S.A.,SUZANO HOLDING S.A.
-CRPG5,15.115.504/0001-24,PNA,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
-CSAN3,50.746.577/0001-15,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",COSAN S.A.,COSAN SA INDUSTRIA E COMERCIO
-REDE3,61.584.140/0001-49,ON,Utilities,Electric Utilities,Electric Utilities,REDE ENERGIA PARTICIPAÇÕES S.A.,REDE ENERGIA PARTICIPAÇÕES S.A.
-CRPG3,15.115.504/0001-24,ON,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
-NEMO5,60.651.809/0001-05,PNA,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO HOLDING S.A.,SUZANO HOLDING S.A.
-TESA3,05.799.312/0001-20,ON,Consumer Non Cyclical,Farming,Agriculture,TERRA SANTA AGRO S.A.,TERRA SANTA AGRO S.A.
-LLIS3,49.669.856/0001-43,ON,Consumer Cyclical,Retail,"Apparel, Fabric and Footwear",RESTOQUE COMÉRCIO E CONFECÇÕES DE ROUPAS SA,LE LIS BLANC DEUX
-ALSO3,05.878.397/0001-32,ON,Financial,Real Estate,Real Estate,ALIANSCE SONAE SHOPPING CENTERS S.A.,ALIANSCE SONAE SHOPPING CENTERS S.A.
-CRFB3,75.315.333/0001-09,ON,Consumer Non Cyclical,Retail and Distribution,Food Retailers,ATACADÃO S.A.,ATACADÃO S.A.
-BTOW3,00.776.574/0001-56,ON,Consumer Cyclical,Retail,Diversified Retailers,B2W - COMPANHIA DIGITAL,B2W - COMPANHIA DIGITAL
-GOLL4,06.164.253/0001-87,PN,Capital Goods and Services,Transportation,Airlines,GOL LINHAS AEREAS INTELIGENTES SA,GOL LINHAS AEREAS INTELIGENTES SA
-STTR3,91.495.499/0001-00,ON,Capital Goods and Services,Machines and Equipments,Agricultural and Construction Machinery,STARA S.A. - INDÚSTRIA DE IMPLEMENTOS AGRÍCOLAS,STARA S.A. - INDÚSTRIA DE IMPLEMENTOS AGRÍCOLAS
-BRFS3,01.838.723/0001-27,ON,Consumer Non Cyclical,Food Processors,"Meat, Poultry and Others",BRF S.A.,BRF S.A.
-MGEL4,61.065.298/0001-02,PN,Basic Materials,Steel and Metalurgy,Iron and Steel Products,MANGELS INDUSTRIAL S.A.,MANGELS
-POSI3,81.243.735/0001-48,ON,Information Technology,Hardware and Equipments,Hardware and Equipments,POSITIVO TECNOLOGIA S.A.,POSITIVO INFORMATICA SA
-MGEL3,61.065.298/0001-02,ON,Basic Materials,Steel and Metalurgy,Iron and Steel Products,MANGELS INDUSTRIAL S.A.,MANGELS
-SQIA3,04.065.791/0001-99,ON,Information Technology,Software and Services,Software and Services,SINQIA S.A.,SINQUIA S.A.
-BRKM3,42.150.391/0001-70,ON,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
-BRKM5,42.150.391/0001-70,PNA,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
-BRKM6,42.150.391/0001-70,PNB,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
-AZUL4,09.305.994/0001-29,PN,Capital Goods and Services,Transportation,Airlines,AZUL S.A.,AZUL S.A.
-TCSA3,08.065.557/0001-12,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,TECNISA S/A,TECNISA S/A
-APER3,11.721.921/0001-60,ON,Financial,"Insurance, Life and Multi-line",Insurance Brokers,ALPER CONSULTORIA E CORRETORA DE SEGUROS S.A.,BR INSURANCE CORRETORA DE SEGUROS S.A.
-ATOM3,00.359.742/0001-08,ON,Others,Others,Others,ATOM EMPREENDIMENTOS E PARTICIPAÇÕES S.A.,ATOM EMPREENDIMENTOS E PARTICIPAÇÕES S.A.
-TAEE4,07.859.971/0001-30,PN,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
-BSEV3,15.527.906/0001-36,ON,Consumer Non Cyclical,Food Processors,Sugar and Alcohol,BIOSEV S.A.,LDC BIOENERGIA SA
-QUSW3,35.791.391/0001-94,ON,Information Technology,Software and Services,Software and Services,QUALITY SOFTWARE S.A.,QUALITY SOFWARE S.A.
-FIGE4,01.548.981/0001-79,PN,Others,Others,Others,INVESTIMENTOS BEMGE S.A.,INVESTIMENTOS BEMGE
-EVEN3,43.470.988/0001-65,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,EVEN CONSTRUTORA E INCORPORADORA S/A,EVEN
-PPAR3,59.789.545/0001-71,ON,Others,Others,Others,POLPAR S.A.,POLPAR S.A.
-BRPR3,06.977.751/0001-49,ON,Financial,Real Estate,Real Estate,BR PROPERTIES S.A.,BR PROPERTIES S.A.
-ALUP3,08.364.948/0001-38,ON,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
-ALUP4,08.364.948/0001-38,PN,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
-ALUP11,08.364.948/0001-38,UNT,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
-RANI3,92.791.243/0001-03,ON,Basic Materials,Wood and Paper,Pulp and Paper,IRANI PAPEL E EMBALAGEM S.A.,IRANI PAPEL E EMBALAGEM S.A.
-RANI4,92.791.243/0001-03,PN,Basic Materials,Wood and Paper,Pulp and Paper,IRANI PAPEL E EMBALAGEM S.A.,IRANI PAPEL E EMBALAGEM S.A.
-LINX3,06.948.969/0001-75,ON,Information Technology,Software and Services,Software and Services,LINX S.A.,
-INNT3,09.611.768/0001-76,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,INTER CONSTRUTORA E INCORPORADORA S.A,INTER CONSTRUTORA E INCORPORADORA S.A.
-PTBL3,83.475.913/0001-91,ON,Capital Goods and Services,Construction and Engineering ,Building Products   ,PBG S/A,PORTOBELLO S/A
-ODPV3,58.119.199/0001-51,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,ODONTOPREV S/A,ODONTOPREV S/A
-CSNA3,33.042.730/0001-04,ON,Basic Materials,Steel and Metalurgy,Steel,CIA SIDERURGICA NACIONAL,CSN
-OMGE3,09.149.503/0001-06,ON,Utilities,Electric Utilities,Electric Utilities,OMEGA GERAÇÃO S.A.,OMEGA GERAÇÃO S.A.
-TAEE3,07.859.971/0001-30,ON,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
-TAEE11,07.859.971/0001-30,UNT,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
-VVAR3,33.041.260/0652-90,ON,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
-FIGE3,01.548.981/0001-79,ON,Others,Others,Others,INVESTIMENTOS BEMGE S.A.,INVESTIMENTOS BEMGE
-TOTS3,53.113.791/0001-22,ON,Information Technology,Software and Services,Software and Services,TOTVS S.A,TOTVS S.A
-SEER3,04.986.320/0001-13,ON,Consumer Cyclical,Diversified,Educational Services,SER EDUCACIONAL S.A.,
-JSLG3,52.548.435/0001-79,ON,Capital Goods and Services,Transportation,Trucking,JSL S.A.,JSL S.A.
-TASA4,92.781.335/0001-02,PN,Capital Goods and Services,Machines and Equipments,Weapons and Munitions,TAURUS ARMAS S.A.,TAURUS ARMAS S.A.
-CEPE5,10.835.932/0001-08,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
-GSHP3,08.764.621/0001-53,ON,Financial,Real Estate,Real Estate,GENERAL SHOPPING E OUTLETS DO BRASIL S.A.,GENERAL SHOPPING BRASIL SA
-DOHL4,84.683.408/0001-03,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",DOHLER S.A.,DOHLER
-DOHL3,84.683.408/0001-03,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",DOHLER S.A.,DOHLER
-CEPE6,10.835.932/0001-08,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
-LWSA3,02.351.877/0001-52,ON,Information Technology,Software and Services,Software and Services,LOCAWEB SERVIÇOS DE INTERNET S.A.,LOCAWEB SERVIÇOS DE INTERNET S.A.
-MTRE3,07.882.930/0001-65,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MITRE REALTY EMPREENDIMENTOS E PARTICIPAÇÕES S.A.,
-MDNE3,12.049.631/0001-84,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MOURA DUBEUX ENGENHARIA S/A,MOURA DUBEUX
-EMBR3,07.689.002/0001-89,ON,Capital Goods and Services,Transportation Equipment and Components,Aerospace and Defense,EMBRAER S.A.,EMBRAER
-CEPE3,10.835.932/0001-08,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
-LEVE3,60.476.884/0001-87,ON,Consumer Cyclical,Automobiles and Motorcycles,Automobiles and Motorcycles,MAHLE METAL LEVE S.A.,MAHLE METAL LEVE
-EKTR4,02.328.280/0001-97,PN,Utilities,Electric Utilities,Electric Utilities,ELEKTRO REDES S.A.,ELEKTRO REDES S.A.
-EKTR3,02.328.280/0001-97,ON,Utilities,Electric Utilities,Electric Utilities,ELEKTRO REDES S.A.,ELEKTRO REDES S.A.
-NEOE3,01.083.200/0001-18,ON,Utilities,Electric Utilities,Electric Utilities,NEOENERGIA S.A,NEOENERGIA S.A.
-BBSE3,17.344.597/0001-94,ON,Financial,"Insurance, Life and Multi-line",Insurance,BB SEGURIDADE PARTICIPAÇÕES S.A.,
-HBOR3,49.263.189/0001-02,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,HELBOR EMPREENDIMENTOS S/A,HELBOR
-KLBN3,89.637.490/0001-45,ON,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
-KLBN4,89.637.490/0001-45,PN,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
-KLBN11,89.637.490/0001-45,UNT,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
-PRNR3,18.593.815/0001-97,ON,Capital Goods and Services,Diversified Services,Diversified Services,PRINER SERVIÇOS INDUSTRIAIS S.A.,PRINER SERVIÇOS INDUSTRIAIS S.A.
-CIEL3,01.027.058/0001-91,ON,Financial,Diversified Financial Services,Diversified Financial Services,CIELO S.A.,CIELO S.A.
-ADHM3,10.345.009/0001-98,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,ADVANCED DIGITAL HEALTH MEDICINA PREVENTIVA S.A.,HUB COSMÉTICOS S.A.
-UCAS3,90.441.460/0001-48,ON,Consumer Cyclical,Household Products,Home Furnishing,UNICASA INDÚSTRIA DE MÓVEIS S.A.,
-ELEK3,13.788.120/0001-47,ON,Basic Materials,Chemicals,Petrochemicals,,
-ELEK4,13.788.120/0001-47,PN,Basic Materials,Chemicals,Petrochemicals,,
-SMLS3,05.730.375/0001-20,ON,Consumer Cyclical,Diversified,Loyalty Programs,SMILES FIDELIDADE S.A.,SMILES FIDELIDADE S.A.
-EGIE3,02.474.103/0001-19,ON,Utilities,Electric Utilities,Electric Utilities,ENGIE BRASIL ENERGIA S.A.,TRACTEBEL ENERGIA
-RNEW11,08.534.605/0001-74,UNT,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
-RNEW3,08.534.605/0001-74,ON,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
-RNEW4,08.534.605/0001-74,PN,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
-ECOR3,04.149.454/0001-80,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,ECORODOVIAS INFRAESTRUTURA E LOGÍSTICA S.A.,ECORODOVIAS INFRAESTRUTURA E LOGÍSTICA S.A.
-EQTL3,03.220.438/0001-73,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL ENERGIA S/A,EQUATORIAL ENERGIA S/A
-BEEF3,67.620.377/0001-14,ON,Consumer Non Cyclical,Food Processors,"Meat, Poultry and Others",MINERVA S/A,MINERVA S/A
-IRBR3,33.376.989/0001-91,ON,Financial,"Insurance, Life and Multi-line",Insurance,IRB - BRASIL RESSEGUROS S.A.,
-TEND3,71.476.527/0001-35,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CONSTRUTORA TENDA S/A,CONSTRUTORA TENDA S/A
-TASA3,92.781.335/0001-02,ON,Capital Goods and Services,Machines and Equipments,Weapons and Munitions,TAURUS ARMAS S.A.,TAURUS ARMAS S.A.
-AFLT3,10.338.320/0001-00,ON,Utilities,Electric Utilities,Electric Utilities,AFLUENTE TRANSMISSÃO DE ENERGIA ELETRICA S/A,AFLUENTE TRANSMISSÃO DE ENERGIA ELETRICA S/A
-CVCB3,10.760.260/0001-19,ON,Consumer Cyclical,"Travel, Entertainment and Leisure",Travel and Tourism,CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS SA,CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS SA
-RAIL3,02.387.241/0001-60,ON,Capital Goods and Services,Transportation,Railroads,RUMO S.A.,ALL - AMÉRICA LATINA LOGÍSTICA S.A.
-VALE3,33.592.510/0001-54,ON,Basic Materials,Mining,Metalic Minerals,VALE S.A.,VALE
-BRAP3,03.847.461/0001-92,ON,Basic Materials,Mining,Metalic Minerals,BRADESPAR S/A,BRADESPAR S/A
-BRAP4,03.847.461/0001-92,PN,Basic Materials,Mining,Metalic Minerals,BRADESPAR S/A,BRADESPAR S/A
-ABEV3,07.526.557/0001-00,ON,Consumer Non Cyclical,Beverage,Beer and Soft Drinks,AMBEV S.A.,AMBEV S.A
-DTEX3,97.837.181/0001-47,ON,Basic Materials,Wood and Paper,Wood,DURATEX S.A.,DURATEX
-FRIO3,04.821.041/0001-08,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,METALFRIO SOLUTIONS S/A,METALFRIO SOLUTIONS S/A
-HGTX3,78.876.950/0001-71,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Apparel and Clothing,CIA HERING,CIA HERING
-EQPA3,04.895.728/0001-80,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
-EQPA5,04.895.728/0001-80,PNA,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
-EQPA6,04.895.728/0001-80,PNB,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
-EQPA7,04.895.728/0001-80,PNC,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
-BMGB4,61.186.680/0001-74,PN,Financial,Financial Intermediaries,Banks,BANCO BMG S/A,BANCO BMG S/A
 ENGI14,00.864.214/0001-06,UNT,Utilities,Electric Utilities,Electric Utilities,ENERGISA SA,ENERGISA
 STBP11,02.762.121/0001-04,UNT,Capital Goods and Services,Transportation,Warehousing and Storage,SANTOS BRASIL PARTICIPAÇÕES S.A.,SANTOS BRASIL PARTICIPAÇÕES S.A.
 STBP4,02.762.121/0001-04,PN,Capital Goods and Services,Transportation,Warehousing and Storage,SANTOS BRASIL PARTICIPAÇÕES S.A.,SANTOS BRASIL PARTICIPAÇÕES S.A.
@@ -251,6 +95,273 @@ MTIG4,80.227.184/0001-66,PN,Basic Materials,Packaging,Packaging,METALGRAFICA IGU
 CALI4,61.022.042/0001-18,PN,Consumer Cyclical,Heavy Construction,Real Estate Development,CONST ADOLPHO LINDENBERG SA,CAL S/A
 SNSY6,14.807.945/0001-24,PNB,Basic Materials,Diversified Materials,Other Materials,SANSUY SA INDÚSTRIA  DE PLASTICOS,SANSUY S.A. INDÚSTRIA DE PLÁSTICOS
 SNSY5,14.807.945/0001-24,PNA,Basic Materials,Diversified Materials,Other Materials,SANSUY SA INDÚSTRIA  DE PLASTICOS,SANSUY S.A. INDÚSTRIA DE PLÁSTICOS
+TIMP3,02.558.115/0001-21,ON,Communications,Telecommunications,Telecommunications,TIM PARTICIPAÇÕES SA,TIM
+SEER3,04.986.320/0001-13,ON,Consumer Cyclical,Diversified,Educational Services,SER EDUCACIONAL S.A.,
+JSLG3,52.548.435/0001-79,ON,Capital Goods and Services,Transportation,Trucking,JSL S.A.,JSL S.A.
+CSAN99,50.746.577/0001-15,UNT,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",COSAN S.A.,COSAN SA INDUSTRIA E COMERCIO
+VSPT1,00.924.429/0001-75,DIR.ORD,Capital Goods and Services,Transportation,Railroads,FERROVIA CENTRO ATLANTICA SA,FERROVIA CENTRO-ATLÂNTICA S.A.
+VVAR4,33.041.260/0652-90,PN,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
+JBDU11,60.637.238/0001-54,ON,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
+JBDU12,60.637.238/0001-54,PN,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
+LTLA3,05.495.546/0001-84,ON,Basic Materials,Mining,Metalic Minerals,LITELA PARTICIPAÇÕES S.A.,LITELA PARTICIPAÇÕES S.A.
+TEKA3,82.636.986/0001-55,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",TEKA TECELAGEM KUEHNRICH SA - EM RECUPERAÇÃO JUDICIAL,TEKA S.A.
+RPMG3,33.412.081/0001-96,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",REFINARIA PET MANGUINHOS SA,REFINARIA DE PETRÓLEOS DE MANGUINHOS S.A
+TEKA4,82.636.986/0001-55,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",TEKA TECELAGEM KUEHNRICH SA - EM RECUPERAÇÃO JUDICIAL,TEKA S.A.
+MMXM3,02.762.115/0001-49,ON,Basic Materials,Mining,Metalic Minerals,MMX MINERAÇÃO E METÁLICOS S.A. - EM RECUPERAÇÃO JUDICIAL,MMX MINERAÇÃO E METÁLICOS S.A.  - EM RECUPERAÇÃO JUDICIAL
+JBDU4,60.637.238/0001-54,PN,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
+SLED4,60.500.139/0001-26,PN,Consumer Cyclical,Retail,Diversified Retailers,SARAIVA SA LIVREIROS EDITORES,EDITORA SARAIVA
+BMGB4,61.186.680/0001-74,PN,Financial,Financial Intermediaries,Banks,BANCO BMG S/A,BANCO BMG S/A
+MERC3,33.040.601/0001-87,ON,Financial,Financial Intermediaries,Savings and Loans,MERCANTIL DO BR FINC SA CFI,MERCANTIL BRASIL
+MERC4,33.040.601/0001-87,PN,Financial,Financial Intermediaries,Savings and Loans,MERCANTIL DO BR FINC SA CFI,MERCANTIL BRASIL
+JBDU3,60.637.238/0001-54,ON,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
+BGIP4,13.009.717/0001-46,PN,Financial,Financial Intermediaries,Banks,BANCO DO ESTADO DE SERGIPE SA,BANESE
+BGIP3,13.009.717/0001-46,ON,Financial,Financial Intermediaries,Banks,BANCO DO ESTADO DE SERGIPE SA,BANESE
+TCNO4,33.111.246/0001-90,PN,Capital Goods and Services,Construction and Engineering ,Consultive Engineering,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL
+CEBR6,00.070.698/0001-11,PNB,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
+YDUQ3,08.807.432/0001-10,ON,Consumer Cyclical,Diversified,Educational Services,YDUQS PARTICIPACOES S.A.,ESTACIO PARTICIPAÇÕES SA
+EQMA3B,06.272.793/0001-84,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL MARANHÃO DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL MARANHÃO DISTRIBUIDORA DE ENERGIA S.A.
+NUTR3,51.128.999/0001-90,ON,Basic Materials,Chemicals,Fertilizers,NUTRIPLANT INDUSTRIA E COMÉRCIO S/A,NUTRIPLANT
+BAHI3,45.987.245/0001-92,ON,Consumer Cyclical,Diversified,Educational Services,BAHEMA EDUCACAO S.A.,BAHEMA
+BIOM3,04.752.991/0001-10,ON,Health,Pharmaceutical and Others Products,Pharmaceutical and Others Products,BIOMM SA,BIOMM SA
+SLED3,60.500.139/0001-26,ON,Consumer Cyclical,Retail,Diversified Retailers,SARAIVA SA LIVREIROS EDITORES,EDITORA SARAIVA
+ALPK3,60.537.263/0001-66,ON,Capital Goods and Services,Diversified Services,Diversified Services,"ALLPARK EMPREENDIMENTOS, PARTICIPAÇÕES E SERVIÇOS S.A.","ALLPARK EMPREENDIMENTOS, PARTICIPAÇÕES E SERVIÇOS S.A."
+AMBP3,12.648.266/0001-24,ON,Utilities,Water Utilities,Water Utilities,AMBIPAR PARTICIPAÇÕES E EMPREENDIMENTOS S.A.,AMBIPAR PARTICIPAÇÕES E EMPREENDIMENTOS S.A.
+DMVF3,12.108.897/0001-50,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,D1000 VAREJO FARMA PARTICIPAÇÕES S.A.,
+LJQQ3,96.418.264/0218-02,ON,Consumer Cyclical,Retail,Diversified Retailers,LOJAS QUERO-QUERO S.A.,LOJAS QUERO-QUERO S.A.
+PDTC3,02.365.069/0001-44,ON,Financial,Diversified Financial Services,Diversified Financial Services,PADTEC HOLDING S.A.,--
+SOMA3,10.285.590/0001-08,ON,Consumer Cyclical,Retail,"Apparel, Fabric and Footwear",GRUPO DE MODA SOMA S.A.,RBX RIO COMÉRCIO DE ROUPAS S.A.
+LAVV3,26.462.693/0001-28,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,LAVVI EMPREENDIMENTOS IMOBILIÁRIOS S.A.,LAVVI EMPREENDIMENTOS IMOBILIÁRIOS
+TCNO3,33.111.246/0001-90,ON,Capital Goods and Services,Construction and Engineering ,Consultive Engineering,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL
+NGRD3,10.139.870/0001-08,ON,Information Technology,Software and Services,Software and Services,NEOGRID PARTICIPACOES S.A.,NEOGRID
+AVLL3,16.811.931/0001-00,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,ALPHAVILLE S.A.,ALPHAVILLE
+GMAT3,24.990.777/0001-09,ON,Consumer Non Cyclical,Retail and Distribution,Food Retailers,GRUPO MATEUS S.A.,GRUPO MATEUS
+BBAS11,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
+BBAS12,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
+BBAS3,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
+CASN3,82.508.433/0001-17,ON,Utilities,Water Utilities,Water Utilities,CIA CAT. DE ÁGUAS E SANEAMENTO - CASAN,CASAN
+ECPR4,01.971.614/0001-83,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers","EMP.NAC. DE COMÉRCIO, RÉDITO E PART. S.A. - ENCORPAR",ENCORPAR
+ECPR3,01.971.614/0001-83,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers","EMP.NAC. DE COMÉRCIO, RÉDITO E PART. S.A. - ENCORPAR",ENCORPAR
+CASN4,82.508.433/0001-17,PN,Utilities,Water Utilities,Water Utilities,CIA CAT. DE ÁGUAS E SANEAMENTO - CASAN,CASAN
+LCAM3,10.215.988/0001-60,ON,Consumer Cyclical,Diversified,Car Rental,COMPANHIA DE LOCAÇÃO DAS AMERICAS,LOCAMERICA
+CSMG3,17.281.106/0001-03,ON,Utilities,Water Utilities,Water Utilities,COMPANHIA DE SANEAMENTO DE MINAS GERAIS,COPASA MG
+EMAE4,02.302.101/0001-42,PN,Utilities,Electric Utilities,Electric Utilities,EMAE-EMP.METROPOLITANA ÁGUAS ENERGIA S.A,EMAE
+EMAE3,02.302.101/0001-42,ON,Utilities,Electric Utilities,Electric Utilities,EMAE-EMP.METROPOLITANA ÁGUAS ENERGIA S.A,EMAE
+BAZA3,04.902.979/0001-44,ON,Financial,Financial Intermediaries,Banks,BANCO DA AMAZÔNIA S.A.,BANCO DA AMAZONIA S.A.
+CEBR3,00.070.698/0001-11,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
+EUCA4,56.643.018/0001-66,PN,Basic Materials,Wood and Paper,Wood,EUCATEX SA IND E COMERCIO,EUCATEX
+CEBR5,00.070.698/0001-11,PNA,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
+EUCA3,56.643.018/0001-66,ON,Basic Materials,Wood and Paper,Wood,EUCATEX SA IND E COMERCIO,EUCATEX
+INEP3,76.627.504/0001-06,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,INEPAR SA IND E CONSTRUÇÕES - EM RECUPERAÇÃO JUDICIAL,INEPAR S/A
+INEP4,76.627.504/0001-06,PN,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,INEPAR SA IND E CONSTRUÇÕES - EM RECUPERAÇÃO JUDICIAL,INEPAR S/A
+BEES4,28.127.603/0001-78,PN,Financial,Financial Intermediaries,Banks,BANESTES SA BANCO DO ESTADO DO ESPIRITO SANTO,BANESTES S/A
+BEES3,28.127.603/0001-78,ON,Financial,Financial Intermediaries,Banks,BANESTES SA BANCO DO ESTADO DO ESPIRITO SANTO,BANESTES S/A
+CEED3,08.467.115/0001-00,ON,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE DISTRIBUIÇÃO DE ENERGIA ELETRICA,CEEE-D
+CEED4,08.467.115/0001-00,PN,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE DISTRIBUIÇÃO DE ENERGIA ELETRICA,CEEE-D
+PTNT3,88.613.658/0001-10,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",PETTENATI SA IND TEXTIL,PETTENATI
+EEEL4,92.715.812/0001-31,PN,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE GERACAO E TRANSMISSAO DE ENERGIA ELETRICA,CEEE-GT
+COCE3,07.047.251/0001-70,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
+HBTS5,87.762.563/0001-03,PNA,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
+HBTS6,87.762.563/0001-03,PNB,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
+HBTS3,87.762.563/0001-03,ON,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
+VIVR3,67.571.414/0001-41,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,VIVER INCORP. E CONSTRUTORA S.A.- EM RECUPERAÇÃO JUDICIAL,VIVER
+USIM5,60.894.730/0001-05,PNA,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
+COCE6,07.047.251/0001-70,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
+COCE5,07.047.251/0001-70,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
+USIM3,60.894.730/0001-05,ON,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
+USIM6,60.894.730/0001-05,PNB,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
+PTNT4,88.613.658/0001-10,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",PETTENATI SA IND TEXTIL,PETTENATI
+WLMM4,33.228.024/0001-51,PN,Capital Goods and Services,Retail,Transportation Material,WLM INDÚSTRIA E COMÉRCIO S.A.,WLM
+CORR4,15.101.405/0001-93,PN,Financial,Real Estate,Real Estate,CORREA RIBEIRO SA COM IND,CORREA RIBEIRO SA COM. IND.
+TPIS3,03.014.553/0001-91,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,TPI - TRIUNFO PARTICIPACOES E INVESTIMENTOS S.A.,TPI
+EEEL3,92.715.812/0001-31,ON,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE GERACAO E TRANSMISSAO DE ENERGIA ELETRICA,CEEE-GT
+QUAL3,11.992.680/0001-93,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,QUALICORP SA,QUALICORP SA
+PDGR3,02.950.811/0001-89,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,PDG REALTY SA EMPREENDIMENTOS E PARTS - EM RECUPERAÇÃO JUDICIAL,PDG REALTY SA EMPREENDIMENTOS E PARTS
+CSRN3,08.324.196/0001-81,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
+CSRN6,08.324.196/0001-81,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
+CEEB3,15.139.629/0001-94,ON,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
+CEEB6,15.139.629/0001-94,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
+CSRN5,08.324.196/0001-81,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
+CEEB5,15.139.629/0001-94,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
+MMXM11,02.762.115/0001-49,TPR,Basic Materials,Mining,Metalic Minerals,MMX MINERAÇÃO E METÁLICOS S.A. - EM RECUPERAÇÃO JUDICIAL,MMX MINERAÇÃO E METÁLICOS S.A.  - EM RECUPERAÇÃO JUDICIAL
+CORR3,15.101.405/0001-93,ON,Financial,Real Estate,Real Estate,CORREA RIBEIRO SA COM IND,CORREA RIBEIRO SA COM. IND.
+CRIV3,17.167.412/0001-13,ON,Financial,Financial Intermediaries,Savings and Loans,FINANCEIRA ALFA S.A.- C.F.I,ALFA FINANCEIRA
+CRIV4,17.167.412/0001-13,PN,Financial,Financial Intermediaries,Savings and Loans,FINANCEIRA ALFA S.A.- C.F.I,ALFA FINANCEIRA
+CGAS5,61.856.571/0001-17,PNA,Utilities,Gas Utilities,Gas Utilities,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS
+CGAS3,61.856.571/0001-17,ON,Utilities,Gas Utilities,Gas Utilities,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS
+GPAR3,08.560.444/0001-93,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA CELG DE PARTICIPAÇÕES,CELGPAR
+ELET3,00.001.180/0001-26,ON,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
+VLID3,33.113.309/0001-47,ON,Capital Goods and Services,Diversified Services,Diversified Services,VALID SOLUÇÕES E SERVIÇOS DE SEGURANÇA EM MEIOS DE PAGAMENTO E IDENTIFICAÇÃO S.A.,AMERICAN BANKNOTE COMPANY
+ELET5,00.001.180/0001-26,PNA,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
+ELET6,00.001.180/0001-26,PNB,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
+COGN3,02.800.026/0001-40,ON,Consumer Cyclical,Diversified,Educational Services,COGNA EDUCAÇÃO S.A.,KROTON EDUCACIONAL S.A.
+CPLE5,76.483.817/0001-20,PNA,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
+CPLE6,76.483.817/0001-20,PNB,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
+RDOR3,06.047.087/0001-39,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,REDE DOR SÃO LUIZ S.A.,REDE D OR
+CPLE3,76.483.817/0001-20,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
+PETZ3,18.328.118/0001-09,ON,Consumer Cyclical,Retail,Diversified Retailers,PET CENTER COMERCIO E PARTICIPACOES S.A.,PETZ PET CENTER
+PLPL3,23.890.968/0001-36,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,PLANO & PLANO DESENVOLVIMENTO IMOBILIÁRIO S.A.,PLANO & PLANO DESENVOLVIMENTO IMOBILIÁRIO
+PGMN3,06.626.253/0001-53,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,EMPREENDIMENTOS PAGUE MENOS S.A.,PAGUE MENOS
+CASH3,14.110.585/0001-07,ON,Information Technology,Software and Services,Software and Services,MÉLIUZ S.A.,MÉLIUZ
+ENJU3,16.922.038/0001-51,ON,Information Technology,Software and Services,Software and Services,ENJOEI.COM.BR ATIVIDADES DE INTERNET S.A.,ENJOEI
+CSNA3,33.042.730/0001-04,ON,Basic Materials,Steel and Metalurgy,Steel,CIA SIDERURGICA NACIONAL,CSN
+OMGE3,09.149.503/0001-06,ON,Utilities,Electric Utilities,Electric Utilities,OMEGA GERAÇÃO S.A.,OMEGA GERAÇÃO S.A.
+TAEE3,07.859.971/0001-30,ON,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
+TAEE11,07.859.971/0001-30,UNT,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
+VVAR3,33.041.260/0652-90,ON,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
+FIGE3,01.548.981/0001-79,ON,Others,Others,Others,INVESTIMENTOS BEMGE S.A.,INVESTIMENTOS BEMGE
+TOTS3,53.113.791/0001-22,ON,Information Technology,Software and Services,Software and Services,TOTVS S.A,TOTVS S.A
+TASA4,92.781.335/0001-02,PN,Capital Goods and Services,Machines and Equipments,Weapons and Munitions,TAURUS ARMAS S.A.,TAURUS ARMAS S.A.
+CEPE5,10.835.932/0001-08,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
+GSHP3,08.764.621/0001-53,ON,Financial,Real Estate,Real Estate,GENERAL SHOPPING E OUTLETS DO BRASIL S.A.,GENERAL SHOPPING BRASIL SA
+DOHL4,84.683.408/0001-03,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",DOHLER S.A.,DOHLER
+DOHL3,84.683.408/0001-03,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",DOHLER S.A.,DOHLER
+CEPE6,10.835.932/0001-08,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
+LWSA3,02.351.877/0001-52,ON,Information Technology,Software and Services,Software and Services,LOCAWEB SERVIÇOS DE INTERNET S.A.,LOCAWEB SERVIÇOS DE INTERNET S.A.
+MTRE3,07.882.930/0001-65,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MITRE REALTY EMPREENDIMENTOS E PARTICIPAÇÕES S.A.,
+MDNE3,12.049.631/0001-84,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MOURA DUBEUX ENGENHARIA S/A,MOURA DUBEUX
+EMBR3,07.689.002/0001-89,ON,Capital Goods and Services,Transportation Equipment and Components,Aerospace and Defense,EMBRAER S.A.,EMBRAER
+CEPE3,10.835.932/0001-08,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DE PERNAMBUCO - CELPE,CELPE
+LEVE3,60.476.884/0001-87,ON,Consumer Cyclical,Automobiles and Motorcycles,Automobiles and Motorcycles,MAHLE METAL LEVE S.A.,MAHLE METAL LEVE
+EKTR4,02.328.280/0001-97,PN,Utilities,Electric Utilities,Electric Utilities,ELEKTRO REDES S.A.,ELEKTRO REDES S.A.
+EKTR3,02.328.280/0001-97,ON,Utilities,Electric Utilities,Electric Utilities,ELEKTRO REDES S.A.,ELEKTRO REDES S.A.
+NEOE3,01.083.200/0001-18,ON,Utilities,Electric Utilities,Electric Utilities,NEOENERGIA S.A,NEOENERGIA S.A.
+BBSE3,17.344.597/0001-94,ON,Financial,"Insurance, Life and Multi-line",Insurance,BB SEGURIDADE PARTICIPAÇÕES S.A.,
+HBOR3,49.263.189/0001-02,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,HELBOR EMPREENDIMENTOS S/A,HELBOR
+KLBN3,89.637.490/0001-45,ON,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
+KLBN4,89.637.490/0001-45,PN,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
+KLBN11,89.637.490/0001-45,UNT,Basic Materials,Wood and Paper,Pulp and Paper,KLABIN S.A.,KLABIN
+PRNR3,18.593.815/0001-97,ON,Capital Goods and Services,Diversified Services,Diversified Services,PRINER SERVIÇOS INDUSTRIAIS S.A.,PRINER SERVIÇOS INDUSTRIAIS S.A.
+CIEL3,01.027.058/0001-91,ON,Financial,Diversified Financial Services,Diversified Financial Services,CIELO S.A.,CIELO S.A.
+ADHM3,10.345.009/0001-98,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,ADVANCED DIGITAL HEALTH MEDICINA PREVENTIVA S.A.,HUB COSMÉTICOS S.A.
+UCAS3,90.441.460/0001-48,ON,Consumer Cyclical,Household Products,Home Furnishing,UNICASA INDÚSTRIA DE MÓVEIS S.A.,
+ELEK3,13.788.120/0001-47,ON,Basic Materials,Chemicals,Petrochemicals,,
+ELEK4,13.788.120/0001-47,PN,Basic Materials,Chemicals,Petrochemicals,,
+SMLS3,05.730.375/0001-20,ON,Consumer Cyclical,Diversified,Loyalty Programs,SMILES FIDELIDADE S.A.,SMILES FIDELIDADE S.A.
+EGIE3,02.474.103/0001-19,ON,Utilities,Electric Utilities,Electric Utilities,ENGIE BRASIL ENERGIA S.A.,TRACTEBEL ENERGIA
+RNEW11,08.534.605/0001-74,UNT,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
+RNEW3,08.534.605/0001-74,ON,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
+RNEW4,08.534.605/0001-74,PN,Utilities,Electric Utilities,Electric Utilities,RENOVA ENERGIA S/A,RENOVA ENERGIA S/A
+ECOR3,04.149.454/0001-80,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,ECORODOVIAS INFRAESTRUTURA E LOGÍSTICA S.A.,ECORODOVIAS INFRAESTRUTURA E LOGÍSTICA S.A.
+EQTL3,03.220.438/0001-73,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL ENERGIA S/A,EQUATORIAL ENERGIA S/A
+BEEF3,67.620.377/0001-14,ON,Consumer Non Cyclical,Food Processors,"Meat, Poultry and Others",MINERVA S/A,MINERVA S/A
+IRBR3,33.376.989/0001-91,ON,Financial,"Insurance, Life and Multi-line",Insurance,IRB - BRASIL RESSEGUROS S.A.,
+SIMH3,07.415.333/0001-20,ON,Financial,Holdings - Diversified,Holdings - Diversified,SIMPAR S.A.,SIMPAR
+CURY3,08.797.760/0001-83,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CURY CONSTRUTORA E INCORPORADORA S.A.,CURY CONSTRUTORA
+HBSA3,12.648.327/0001-53,ON,Capital Goods and Services,Transportation,Marine and Water Transport,HIDROVIAS DO BRASIL S.A.,HIDROVIAS DO BRASIL
+BOAS3,11.725.176/0001-27,ON,Financial,Diversified Financial Services,Diversified Financial Services,BOA VISTA SERVIÇOS S.A.,BOA VISTA
+MELK3,12.181.987/0001-77,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MELNICK EVEN DESENVOLVIMENTO IMOBILIÁRIO S.A.,MELNICK
+AERI3,12.528.708/0001-07,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,AERIS IND. E COM. DE EQUIP. GERACAO DE ENERGIA S.A.,AERIS
+REDE4,61.584.140/0001-49,PN,Utilities,Electric Utilities,Electric Utilities,REDE ENERGIA PARTICIPAÇÕES S.A.,REDE ENERGIA PARTICIPAÇÕES S.A.
+VALE5,33.592.510/0001-54,PNA,Basic Materials,Mining,Metalic Minerals,VALE S.A.,VALE
+UNID3,04.437.534/0001-30,ON,Consumer Cyclical,Diversified,Car Rental,UNIDAS S/A,UNIDAS S/A
+VVAR11,33.041.260/0652-90,UNT,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
+BMGB11,61.186.680/0001-74,UNT,Financial,Financial Intermediaries,Banks,BANCO BMG S/A,BANCO BMG S/A
+SMFT20,07.594.978/0001-78,M2,Consumer Cyclical,"Travel, Entertainment and Leisure",Sports,SMARTFIT ESCOLA DE GINÁSTICA E DANÇA S.A.,SMARTFIT ESCOLA DE GINÁSTICA E DANÇA S.A.
+HETA3,92.749.225/0001-63,ON,Consumer Cyclical,Household Products,Houseware Utensils,HERCULES S/A - FABRICA DE TALHERES,HERCULES S/A
+HETA4,92.749.225/0001-63,PN,Consumer Cyclical,Household Products,Houseware Utensils,HERCULES S/A - FABRICA DE TALHERES,HERCULES S/A
+LIPR3,01.104.937/0001-70,ON,Utilities,Electric Utilities,Electric Utilities,ELETROBRÁS PARTICIPAÇÕES S.A. - ELETROPAR,ELETROPAR
+BKBR3,13.574.594/0001-96,ON,Consumer Cyclical,Hotels and Restaurants,Restaurants and Similars,BK BRASIL OPERAÇÃO E ASSESSORIA A RESTAURANTES S.A.,
+CAML3,64.904.295/0001-03,ON,Consumer Non Cyclical,Food Processors,Other Food Manufacturing,CAMIL ALIMENTOS S/A,CAMIL ALIMENTOS S/A
+PRIO3,10.629.105/0001-68,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",PETRO RIO S.A.,PETRO RIO S.A.
+IGTA3,51.218.147/0001-93,ON,Financial,Real Estate,Real Estate,IGUATEMI EMPRESA DE SHOPPING CENTERS S/A,IGUATEMI EMPRESA DE SHOPPING CENTERS S/A
+GGBR3,33.611.500/0001-19,ON,Basic Materials,Steel and Metalurgy,Steel,GERDAU S.A.,GERDAU S.A.
+GGBR4,33.611.500/0001-19,PN,Basic Materials,Steel and Metalurgy,Steel,GERDAU S.A.,GERDAU S.A.
+CPRE3,08.439.659/0001-50,ON,Utilities,Electric Utilities,Electric Utilities,CPFL ENERGIAS RENOVÁVEIS S.A.,CPFL RENOVÁVEIS
+PSVM11,18.494.485/0001-82,TPR,Capital Goods and Services,Transportation,Warehousing and Storage,PORTO SUDESTE V.M. S.A.,PORTO SUDESTE V.M. S.A.
+BIDI4,00.416.968/0001-01,PN,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
+DTCY4,03.303.999/0001-36,PN,Capital Goods and Services,Diversified Services,Diversified Services,DTCOM - DIRECT TO COMPANY S.A.,DTCOM
+BIDI3,00.416.968/0001-01,ON,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
+DTCY3,03.303.999/0001-36,ON,Capital Goods and Services,Diversified Services,Diversified Services,DTCOM - DIRECT TO COMPANY S.A.,DTCOM
+VIVT4,02.558.157/0001-62,PN,Communications,Telecommunications,Telecommunications,TELEFÔNICA BRASIL S.A.,TELEFÔNICA BRASIL
+VIVT3,02.558.157/0001-62,ON,Communications,Telecommunications,Telecommunications,TELEFÔNICA BRASIL S.A.,TELEFÔNICA BRASIL
+CRDE3,07.820.907/0001-46,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CR2 EMPREENDIMENTOS IMOBILIÁRIOS S/A,CR2 EMPREENDIMENTOS IMOBILIÁRIOS S/A
+BIDI11,00.416.968/0001-01,UNT,Financial,Financial Intermediaries,Banks,BANCO INTER S.A.,"INTERMEDIUM - CREDITO, FINANCIAMENTO E INVESTIMENTO S.A."
+PARD3,19.378.769/0001-76,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,INSTITUTO HERMES PARDINI S/A,INSTITUTO HERMES PARDINI S/A
+SULA11,29.978.814/0001-87,UNT,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
+CTSA4,21.255.567/0001-89,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
+CTSA3,21.255.567/0001-89,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
+CTSA8,21.255.567/0001-89,PND,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",CIA TECIDOS SANTANENSE,SANTANENSE
+WIZS3,42.278.473/0001-03,ON,Financial,"Insurance, Life and Multi-line",Insurance Brokers,WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S.A.,WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S.A.
+B3SA3,09.346.601/0001-25,ON,Financial,Diversified Financial Services,Diversified Financial Services,"B3 S.A. - BRASIL, BOLSA, BALCÃO",BM&F BOVESPA S/A
+ENEV3,04.423.567/0001-21,ON,Utilities,Electric Utilities,Electric Utilities,ENEVA S.A.,ENEVA SA
+HYPE3,02.932.074/0001-91,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,HYPERA S/A,HYPERA PHARMA S/A
+SULA4,29.978.814/0001-87,PN,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
+TRIS3,08.811.643/0001-27,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,TRISUL S/A,TRISUL
+RDNI3,67.010.660/0001-24,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,RNI NEGÓCIOS IMOBILIÁRIOS S.A.,RODOBENS NEGOCIOS IMOBILIARIOS SA
+MNDL3,88.610.191/0001-54,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Accessories,MUNDIAL S.A - PRODUTOS DE CONSUMO,MUNDIAL
+UNIP5,33.958.695/0001-78,PNA,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
+CCRO3,02.846.056/0001-97,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,CCR S.A.,CCR S.A.
+UNIP3,33.958.695/0001-78,ON,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
+UNIP6,33.958.695/0001-78,PNB,Basic Materials,Chemicals,Chemicals - Others,UNIPAR CARBOCLORO S.A.,UNIPAR CARBOCLORO S.A.
+RADL3,61.585.865/0001-51,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,RAIA DROGASIL S.A.,DROGASIL SA
+ENAT3,11.669.021/0001-10,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",ENAUTA PARTICIPAÇÕES S.A.,QGEP PARTICIPAÇÕES SA
+WHRL3,59.105.999/0001-86,ON,Consumer Cyclical,Household Products,Household Appliance,WHIRLPOOL S.A,WHIRLPOOL S.A
+WHRL4,59.105.999/0001-86,PN,Consumer Cyclical,Household Products,Household Appliance,WHIRLPOOL S.A,WHIRLPOOL S.A
+DMMO3,08.926.302/0001-05,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",DOMMO ENERGIA S.A.,OGX PETRÓLEO E GÁS S.A.
+SULA3,29.978.814/0001-87,ON,Financial,"Insurance, Life and Multi-line",Insurance,SUL AMERICA S/A,SUL AMERICA S/A
+CARD3,01.896.779/0001-38,ON,Capital Goods and Services,Diversified Services,Diversified Services,CSU CARDSYSTEM S/A,CSU CARDSYSTEM S/A
+MILS3,27.093.558/0001-15,ON,Capital Goods and Services,Construction and Engineering ,Diversified Services,MILLS ESTRUTURAS E SERVIÇOS DE ENGENHARIA S/A,MILLS ESTRUTURAS E SERVIÇOS DE ENGENHARIA S/A
+SUZB3,16.404.287/0001-55,ON,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO S.A.,SUZANO PAPEL E CELULOSE SA
+VULC3,50.926.955/0001-42,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Footwear,VULCABRAS|AZALEIA S.A.,VULCABRAS S/A.
+ANIM3,09.288.252/0001-32,ON,Consumer Cyclical,Diversified,Educational Services,ANIMA HOLDING S/A,
+CRPG6,15.115.504/0001-24,PNB,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
+NEMO6,60.651.809/0001-05,PNB,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO HOLDING S.A.,SUZANO HOLDING S.A.
+CRPG5,15.115.504/0001-24,PNA,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
+CSAN3,50.746.577/0001-15,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",COSAN S.A.,COSAN SA INDUSTRIA E COMERCIO
+REDE3,61.584.140/0001-49,ON,Utilities,Electric Utilities,Electric Utilities,REDE ENERGIA PARTICIPAÇÕES S.A.,REDE ENERGIA PARTICIPAÇÕES S.A.
+CRPG3,15.115.504/0001-24,ON,Basic Materials,Chemicals,Chemicals - Others,TRONOX PIGMENTOS DO BRASIL S.A.,MILLENNIUM INORGANIC CHEMICALS DO BRASIL
+NEMO5,60.651.809/0001-05,PNA,Basic Materials,Wood and Paper,Pulp and Paper,SUZANO HOLDING S.A.,SUZANO HOLDING S.A.
+TESA3,05.799.312/0001-20,ON,Consumer Non Cyclical,Farming,Agriculture,TERRA SANTA AGRO S.A.,TERRA SANTA AGRO S.A.
+LLIS3,49.669.856/0001-43,ON,Consumer Cyclical,Retail,"Apparel, Fabric and Footwear",RESTOQUE COMÉRCIO E CONFECÇÕES DE ROUPAS SA,LE LIS BLANC DEUX
+ALSO3,05.878.397/0001-32,ON,Financial,Real Estate,Real Estate,ALIANSCE SONAE SHOPPING CENTERS S.A.,ALIANSCE SONAE SHOPPING CENTERS S.A.
+CRFB3,75.315.333/0001-09,ON,Consumer Non Cyclical,Retail and Distribution,Food Retailers,ATACADÃO S.A.,ATACADÃO S.A.
+BTOW3,00.776.574/0001-56,ON,Consumer Cyclical,Retail,Diversified Retailers,B2W - COMPANHIA DIGITAL,B2W - COMPANHIA DIGITAL
+GOLL4,06.164.253/0001-87,PN,Capital Goods and Services,Transportation,Airlines,GOL LINHAS AEREAS INTELIGENTES SA,GOL LINHAS AEREAS INTELIGENTES SA
+STTR3,91.495.499/0001-00,ON,Capital Goods and Services,Machines and Equipments,Agricultural and Construction Machinery,STARA S.A. - INDÚSTRIA DE IMPLEMENTOS AGRÍCOLAS,STARA S.A. - INDÚSTRIA DE IMPLEMENTOS AGRÍCOLAS
+BRFS3,01.838.723/0001-27,ON,Consumer Non Cyclical,Food Processors,"Meat, Poultry and Others",BRF S.A.,BRF S.A.
+MGEL4,61.065.298/0001-02,PN,Basic Materials,Steel and Metalurgy,Iron and Steel Products,MANGELS INDUSTRIAL S.A.,MANGELS
+POSI3,81.243.735/0001-48,ON,Information Technology,Hardware and Equipments,Hardware and Equipments,POSITIVO TECNOLOGIA S.A.,POSITIVO INFORMATICA SA
+MGEL3,61.065.298/0001-02,ON,Basic Materials,Steel and Metalurgy,Iron and Steel Products,MANGELS INDUSTRIAL S.A.,MANGELS
+SQIA3,04.065.791/0001-99,ON,Information Technology,Software and Services,Software and Services,SINQIA S.A.,SINQUIA S.A.
+BRKM3,42.150.391/0001-70,ON,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
+BRKM5,42.150.391/0001-70,PNA,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
+BRKM6,42.150.391/0001-70,PNB,Basic Materials,Chemicals,Petrochemicals,BRASKEM S.A.,BRASKEM
+AZUL4,09.305.994/0001-29,PN,Capital Goods and Services,Transportation,Airlines,AZUL S.A.,AZUL S.A.
+TCSA3,08.065.557/0001-12,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,TECNISA S/A,TECNISA S/A
+APER3,11.721.921/0001-60,ON,Financial,"Insurance, Life and Multi-line",Insurance Brokers,ALPER CONSULTORIA E CORRETORA DE SEGUROS S.A.,BR INSURANCE CORRETORA DE SEGUROS S.A.
+ATOM3,00.359.742/0001-08,ON,Others,Others,Others,ATOM EMPREENDIMENTOS E PARTICIPAÇÕES S.A.,ATOM EMPREENDIMENTOS E PARTICIPAÇÕES S.A.
+TAEE4,07.859.971/0001-30,PN,Utilities,Electric Utilities,Electric Utilities,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.,TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.
+BSEV3,15.527.906/0001-36,ON,Consumer Non Cyclical,Food Processors,Sugar and Alcohol,BIOSEV S.A.,LDC BIOENERGIA SA
+QUSW3,35.791.391/0001-94,ON,Information Technology,Software and Services,Software and Services,QUALITY SOFTWARE S.A.,QUALITY SOFWARE S.A.
+FIGE4,01.548.981/0001-79,PN,Others,Others,Others,INVESTIMENTOS BEMGE S.A.,INVESTIMENTOS BEMGE
+EVEN3,43.470.988/0001-65,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,EVEN CONSTRUTORA E INCORPORADORA S/A,EVEN
+PPAR3,59.789.545/0001-71,ON,Others,Others,Others,POLPAR S.A.,POLPAR S.A.
+BRPR3,06.977.751/0001-49,ON,Financial,Real Estate,Real Estate,BR PROPERTIES S.A.,BR PROPERTIES S.A.
+ALUP3,08.364.948/0001-38,ON,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
+ALUP4,08.364.948/0001-38,PN,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
+ALUP11,08.364.948/0001-38,UNT,Utilities,Electric Utilities,Electric Utilities,ALUPAR INVESTIMENTO S/A,ALUPAR INVESTIMENTO S/A
+RANI3,92.791.243/0001-03,ON,Basic Materials,Wood and Paper,Pulp and Paper,IRANI PAPEL E EMBALAGEM S.A.,IRANI PAPEL E EMBALAGEM S.A.
+RANI4,92.791.243/0001-03,PN,Basic Materials,Wood and Paper,Pulp and Paper,IRANI PAPEL E EMBALAGEM S.A.,IRANI PAPEL E EMBALAGEM S.A.
+LINX3,06.948.969/0001-75,ON,Information Technology,Software and Services,Software and Services,LINX S.A.,
+INNT3,09.611.768/0001-76,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,INTER CONSTRUTORA E INCORPORADORA S.A,INTER CONSTRUTORA E INCORPORADORA S.A.
+PTBL3,83.475.913/0001-91,ON,Capital Goods and Services,Construction and Engineering ,Building Products   ,PBG S/A,PORTOBELLO S/A
+ODPV3,58.119.199/0001-51,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,ODONTOPREV S/A,ODONTOPREV S/A
+TEND3,71.476.527/0001-35,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CONSTRUTORA TENDA S/A,CONSTRUTORA TENDA S/A
+TASA3,92.781.335/0001-02,ON,Capital Goods and Services,Machines and Equipments,Weapons and Munitions,TAURUS ARMAS S.A.,TAURUS ARMAS S.A.
+AFLT3,10.338.320/0001-00,ON,Utilities,Electric Utilities,Electric Utilities,AFLUENTE TRANSMISSÃO DE ENERGIA ELETRICA S/A,AFLUENTE TRANSMISSÃO DE ENERGIA ELETRICA S/A
+CVCB3,10.760.260/0001-19,ON,Consumer Cyclical,"Travel, Entertainment and Leisure",Travel and Tourism,CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS SA,CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS SA
+RAIL3,02.387.241/0001-60,ON,Capital Goods and Services,Transportation,Railroads,RUMO S.A.,ALL - AMÉRICA LATINA LOGÍSTICA S.A.
+VALE3,33.592.510/0001-54,ON,Basic Materials,Mining,Metalic Minerals,VALE S.A.,VALE
+BRAP3,03.847.461/0001-92,ON,Basic Materials,Mining,Metalic Minerals,BRADESPAR S/A,BRADESPAR S/A
+BRAP4,03.847.461/0001-92,PN,Basic Materials,Mining,Metalic Minerals,BRADESPAR S/A,BRADESPAR S/A
+ABEV3,07.526.557/0001-00,ON,Consumer Non Cyclical,Beverage,Beer and Soft Drinks,AMBEV S.A.,AMBEV S.A
+DTEX3,97.837.181/0001-47,ON,Basic Materials,Wood and Paper,Wood,DURATEX S.A.,DURATEX
+FRIO3,04.821.041/0001-08,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,METALFRIO SOLUTIONS S/A,METALFRIO SOLUTIONS S/A
+HGTX3,78.876.950/0001-71,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Apparel and Clothing,CIA HERING,CIA HERING
+EQPA3,04.895.728/0001-80,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
+EQPA5,04.895.728/0001-80,PNA,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
+EQPA6,04.895.728/0001-80,PNB,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
+EQPA7,04.895.728/0001-80,PNC,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL PARÁ DISTRIBUIDORA DE ENERGIA S.A.
 SNSY3,14.807.945/0001-24,ON,Basic Materials,Diversified Materials,Other Materials,SANSUY SA INDÚSTRIA  DE PLASTICOS,SANSUY S.A. INDÚSTRIA DE PLÁSTICOS
 LIGT3,03.378.521/0001-75,ON,Utilities,Electric Utilities,Electric Utilities,LIGHT SA,LIGHT SA
 MTIG3,80.227.184/0001-66,ON,Basic Materials,Packaging,Packaging,METALGRAFICA IGUACU SA,IGUAÇU
@@ -351,7 +462,6 @@ PETR3,33.000.167/0001-01,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exp
 BRIV3,60.770.336/0001-65,ON,Financial,Financial Intermediaries,Banks,BANCO ALFA DE INVESTIMENTO SA,ALFA DE INVESTIMENTO
 LAME4,33.014.556/0001-96,PN,Consumer Cyclical,Retail,Diversified Retailers,LOJAS AMERICANAS SA,LOJAS AMERICANAS S.A.
 LAME3,33.014.556/0001-96,ON,Consumer Cyclical,Retail,Diversified Retailers,LOJAS AMERICANAS SA,LOJAS AMERICANAS S.A.
-TIMP3,02.558.115/0001-21,ON,Communications,Telecommunications,Telecommunications,TIM PARTICIPAÇÕES SA,TIM
 RLOG3,17.346.997/0001-39,ON,Capital Goods and Services,Transportation,Railroads,COSAN LOGÍSTICA S.A.,COSAN LOGÍSTICA S.A.
 BRGE6,17.193.806/0001-46,PNB,Financial,"Insurance, Life and Multi-line",Insurance,CONSORCIO ALFA DE ADMINISTRAÇÃO SA,CONSORCIO ALFA
 RPAD3,17.167.396/0001-69,ON,Financial,Financial Intermediaries,Banks,ALFA HOLDINGS SA,ALFA HOLDINGS
@@ -372,6 +482,7 @@ ALPA4,61.079.117/0001-05,PN,Consumer Cyclical,"Textiles, Apparel and Footwear",F
 ALPA3,61.079.117/0001-05,ON,Consumer Cyclical,"Textiles, Apparel and Footwear",Footwear,ALPARGATAS SA,ALPARGATAS
 BDLL3,60.851.615/0001-53,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,BARDELLA SA INDS MECANICAS,BARDELLA
 HAGA3,30.540.991/0001-66,ON,Capital Goods and Services,Construction and Engineering ,Building Products   ,HAGA S.A. INDÚSTRIA E COMÉRCIO,HAGA
+WLMM3,33.228.024/0001-51,ON,Capital Goods and Services,Retail,Transportation Material,WLM INDÚSTRIA E COMÉRCIO S.A.,WLM
 HAGA4,30.540.991/0001-66,PN,Capital Goods and Services,Construction and Engineering ,Building Products   ,HAGA S.A. INDÚSTRIA E COMÉRCIO,HAGA
 IGBR3,43.185.362/0001-07,ON,Financial,Real Estate,Real Estate,IGB ELETRÔNICA S.A. - EM RECUPERAÇÃO JUDICIAL,GRADIENTE
 AHEB5,62.002.886/0001-60,PNA,Consumer Cyclical,"Travel, Entertainment and Leisure",Entertainment,SÃO PAULO TURISMO S. A.,SÃO PAULO TURISMO S. A.
@@ -420,107 +531,6 @@ ODER3,97.191.902/0001-94,ON,Consumer Non Cyclical,Food Processors,Other Food Man
 RAPT4,89.086.144/0001-16,PN,Capital Goods and Services,Transportation Equipment and Components,Transportation Equipment - Diversified,RANDON S.A. IMPLEMENTOS E PARTICIPAÇÕES,RANDON S.A. IMPLEMENTOS E PARTICIPAÇÕES
 ODER4,97.191.902/0001-94,PN,Consumer Non Cyclical,Food Processors,Other Food Manufacturing,CONSERVAS ODERICH SA,CONSERVAS ODERICH SA
 RAPT3,89.086.144/0001-16,ON,Capital Goods and Services,Transportation Equipment and Components,Transportation Equipment - Diversified,RANDON S.A. IMPLEMENTOS E PARTICIPAÇÕES,RANDON S.A. IMPLEMENTOS E PARTICIPAÇÕES
-CSAN99,50.746.577/0001-15,UNT,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",COSAN S.A.,COSAN SA INDUSTRIA E COMERCIO
-VSPT1,00.924.429/0001-75,DIR.ORD,Capital Goods and Services,Transportation,Railroads,FERROVIA CENTRO ATLANTICA SA,FERROVIA CENTRO-ATLÂNTICA S.A.
-VVAR4,33.041.260/0652-90,PN,Consumer Cyclical,Retail,Electronics and Household Appliance,VIA VAREJO S.A.,PONTO FRIO
-JBDU11,60.637.238/0001-54,ON,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
-JBDU12,60.637.238/0001-54,PN,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
-LTLA3,05.495.546/0001-84,ON,Basic Materials,Mining,Metalic Minerals,LITELA PARTICIPAÇÕES S.A.,LITELA PARTICIPAÇÕES S.A.
-TEKA3,82.636.986/0001-55,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",TEKA TECELAGEM KUEHNRICH SA - EM RECUPERAÇÃO JUDICIAL,TEKA S.A.
-RPMG3,33.412.081/0001-96,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",REFINARIA PET MANGUINHOS SA,REFINARIA DE PETRÓLEOS DE MANGUINHOS S.A
-TEKA4,82.636.986/0001-55,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",TEKA TECELAGEM KUEHNRICH SA - EM RECUPERAÇÃO JUDICIAL,TEKA S.A.
-MMXM3,02.762.115/0001-49,ON,Basic Materials,Mining,Metalic Minerals,MMX MINERAÇÃO E METÁLICOS S.A. - EM RECUPERAÇÃO JUDICIAL,MMX MINERAÇÃO E METÁLICOS S.A.  - EM RECUPERAÇÃO JUDICIAL
-JBDU4,60.637.238/0001-54,PN,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
-SLED4,60.500.139/0001-26,PN,Consumer Cyclical,Retail,Diversified Retailers,SARAIVA SA LIVREIROS EDITORES,EDITORA SARAIVA
-MERC3,33.040.601/0001-87,ON,Financial,Financial Intermediaries,Savings and Loans,MERCANTIL DO BR FINC SA CFI,MERCANTIL BRASIL
-MERC4,33.040.601/0001-87,PN,Financial,Financial Intermediaries,Savings and Loans,MERCANTIL DO BR FINC SA CFI,MERCANTIL BRASIL
-JBDU3,60.637.238/0001-54,ON,Others,Others,Others,INDS J B DUARTE SA,J B DUARTE
-BGIP4,13.009.717/0001-46,PN,Financial,Financial Intermediaries,Banks,BANCO DO ESTADO DE SERGIPE SA,BANESE
-BGIP3,13.009.717/0001-46,ON,Financial,Financial Intermediaries,Banks,BANCO DO ESTADO DE SERGIPE SA,BANESE
-TCNO4,33.111.246/0001-90,PN,Capital Goods and Services,Construction and Engineering ,Consultive Engineering,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL
-TCNO3,33.111.246/0001-90,ON,Capital Goods and Services,Construction and Engineering ,Consultive Engineering,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL,TECNOSOLO S/A - EM RECUPERAÇÃO JUDICIAL
-BBAS11,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
-BBAS12,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
-BBAS3,00.000.000/0001-91,ON,Financial,Financial Intermediaries,Banks,BANCO DO BRASIL S.A.,BANCO DO BRASIL S.A.
-CASN3,82.508.433/0001-17,ON,Utilities,Water Utilities,Water Utilities,CIA CAT. DE ÁGUAS E SANEAMENTO - CASAN,CASAN
-ECPR4,01.971.614/0001-83,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers","EMP.NAC. DE COMÉRCIO, RÉDITO E PART. S.A. - ENCORPAR",ENCORPAR
-ECPR3,01.971.614/0001-83,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers","EMP.NAC. DE COMÉRCIO, RÉDITO E PART. S.A. - ENCORPAR",ENCORPAR
-CASN4,82.508.433/0001-17,PN,Utilities,Water Utilities,Water Utilities,CIA CAT. DE ÁGUAS E SANEAMENTO - CASAN,CASAN
-LCAM3,10.215.988/0001-60,ON,Consumer Cyclical,Diversified,Car Rental,COMPANHIA DE LOCAÇÃO DAS AMERICAS,LOCAMERICA
-CSMG3,17.281.106/0001-03,ON,Utilities,Water Utilities,Water Utilities,COMPANHIA DE SANEAMENTO DE MINAS GERAIS,COPASA MG
-EMAE4,02.302.101/0001-42,PN,Utilities,Electric Utilities,Electric Utilities,EMAE-EMP.METROPOLITANA ÁGUAS ENERGIA S.A,EMAE
-EMAE3,02.302.101/0001-42,ON,Utilities,Electric Utilities,Electric Utilities,EMAE-EMP.METROPOLITANA ÁGUAS ENERGIA S.A,EMAE
-BAZA3,04.902.979/0001-44,ON,Financial,Financial Intermediaries,Banks,BANCO DA AMAZÔNIA S.A.,BANCO DA AMAZONIA S.A.
-CEBR3,00.070.698/0001-11,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
-EUCA4,56.643.018/0001-66,PN,Basic Materials,Wood and Paper,Wood,EUCATEX SA IND E COMERCIO,EUCATEX
-CEBR6,00.070.698/0001-11,PNB,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
-CEBR5,00.070.698/0001-11,PNA,Utilities,Electric Utilities,Electric Utilities,COMPANHIA ENERGÉTICA DE BRASÍLIA - CEB,CEB - COMPANHIA ENERGÉTICA DE BRASÍLIA
-EUCA3,56.643.018/0001-66,ON,Basic Materials,Wood and Paper,Wood,EUCATEX SA IND E COMERCIO,EUCATEX
-INEP3,76.627.504/0001-06,ON,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,INEPAR SA IND E CONSTRUÇÕES - EM RECUPERAÇÃO JUDICIAL,INEPAR S/A
-INEP4,76.627.504/0001-06,PN,Capital Goods and Services,Machines and Equipments,Machines and Industrial Equipments,INEPAR SA IND E CONSTRUÇÕES - EM RECUPERAÇÃO JUDICIAL,INEPAR S/A
-BEES4,28.127.603/0001-78,PN,Financial,Financial Intermediaries,Banks,BANESTES SA BANCO DO ESTADO DO ESPIRITO SANTO,BANESTES S/A
-BEES3,28.127.603/0001-78,ON,Financial,Financial Intermediaries,Banks,BANESTES SA BANCO DO ESTADO DO ESPIRITO SANTO,BANESTES S/A
-CEED3,08.467.115/0001-00,ON,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE DISTRIBUIÇÃO DE ENERGIA ELETRICA,CEEE-D
-CEED4,08.467.115/0001-00,PN,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE DISTRIBUIÇÃO DE ENERGIA ELETRICA,CEEE-D
-PTNT3,88.613.658/0001-10,ON,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",PETTENATI SA IND TEXTIL,PETTENATI
-EEEL4,92.715.812/0001-31,PN,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE GERACAO E TRANSMISSAO DE ENERGIA ELETRICA,CEEE-GT
-COCE3,07.047.251/0001-70,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
-HBTS5,87.762.563/0001-03,PNA,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
-HBTS6,87.762.563/0001-03,PNB,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
-HBTS3,87.762.563/0001-03,ON,Financial,Real Estate,Real Estate,COMPANHIIA HABITASUL DE PARTICIPAÇÕES,CIA HABITASUL DE PARTICIPAÇÕES
-VIVR3,67.571.414/0001-41,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,VIVER INCORP. E CONSTRUTORA S.A.- EM RECUPERAÇÃO JUDICIAL,VIVER
-WLMM3,33.228.024/0001-51,ON,Capital Goods and Services,Retail,Transportation Material,WLM INDÚSTRIA E COMÉRCIO S.A.,WLM
-USIM5,60.894.730/0001-05,PNA,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
-COCE6,07.047.251/0001-70,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
-COCE5,07.047.251/0001-70,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERG CEARA - COELCE,CIA ENERG CEARA - COELCE
-USIM3,60.894.730/0001-05,ON,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
-USIM6,60.894.730/0001-05,PNB,Basic Materials,Steel and Metalurgy,Steel,USINAS SIDERURGICAS DE MINAS GERAIS SA,USIMINAS
-PTNT4,88.613.658/0001-10,PN,Consumer Cyclical,"Textiles, Apparel and Footwear","Fabric, Thread and Fibers",PETTENATI SA IND TEXTIL,PETTENATI
-WLMM4,33.228.024/0001-51,PN,Capital Goods and Services,Retail,Transportation Material,WLM INDÚSTRIA E COMÉRCIO S.A.,WLM
-CORR4,15.101.405/0001-93,PN,Financial,Real Estate,Real Estate,CORREA RIBEIRO SA COM IND,CORREA RIBEIRO SA COM. IND.
-TPIS3,03.014.553/0001-91,ON,Capital Goods and Services,Transportation,Toll Roads and Highways,TPI - TRIUNFO PARTICIPACOES E INVESTIMENTOS S.A.,TPI
-EEEL3,92.715.812/0001-31,ON,Utilities,Electric Utilities,Electric Utilities,CIA ESTADUAL DE GERACAO E TRANSMISSAO DE ENERGIA ELETRICA,CEEE-GT
-QUAL3,11.992.680/0001-93,ON,Health,Analysis and Diagnostics,Analysis and Diagnostics,QUALICORP SA,QUALICORP SA
-PDGR3,02.950.811/0001-89,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,PDG REALTY SA EMPREENDIMENTOS E PARTS - EM RECUPERAÇÃO JUDICIAL,PDG REALTY SA EMPREENDIMENTOS E PARTS
-CSRN3,08.324.196/0001-81,ON,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
-CSRN6,08.324.196/0001-81,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
-CEEB3,15.139.629/0001-94,ON,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
-CEEB6,15.139.629/0001-94,PNB,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
-CSRN5,08.324.196/0001-81,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ENERGÉTICA DO RIO GRANDE DO NORTE,COSERN
-CEEB5,15.139.629/0001-94,PNA,Utilities,Electric Utilities,Electric Utilities,CIA ELETRICIDADE DA BAHIA,COELBA
-MMXM11,02.762.115/0001-49,TPR,Basic Materials,Mining,Metalic Minerals,MMX MINERAÇÃO E METÁLICOS S.A. - EM RECUPERAÇÃO JUDICIAL,MMX MINERAÇÃO E METÁLICOS S.A.  - EM RECUPERAÇÃO JUDICIAL
-CORR3,15.101.405/0001-93,ON,Financial,Real Estate,Real Estate,CORREA RIBEIRO SA COM IND,CORREA RIBEIRO SA COM. IND.
-CRIV3,17.167.412/0001-13,ON,Financial,Financial Intermediaries,Savings and Loans,FINANCEIRA ALFA S.A.- C.F.I,ALFA FINANCEIRA
-CRIV4,17.167.412/0001-13,PN,Financial,Financial Intermediaries,Savings and Loans,FINANCEIRA ALFA S.A.- C.F.I,ALFA FINANCEIRA
-CGAS5,61.856.571/0001-17,PNA,Utilities,Gas Utilities,Gas Utilities,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS
-CGAS3,61.856.571/0001-17,ON,Utilities,Gas Utilities,Gas Utilities,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS,COMPANHIA DE GÁS DE SÃO PAULO - COMGÁS
-GPAR3,08.560.444/0001-93,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA CELG DE PARTICIPAÇÕES,CELGPAR
-ELET3,00.001.180/0001-26,ON,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
-VLID3,33.113.309/0001-47,ON,Capital Goods and Services,Diversified Services,Diversified Services,VALID SOLUÇÕES E SERVIÇOS DE SEGURANÇA EM MEIOS DE PAGAMENTO E IDENTIFICAÇÃO S.A.,AMERICAN BANKNOTE COMPANY
-ELET5,00.001.180/0001-26,PNA,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
-ELET6,00.001.180/0001-26,PNB,Utilities,Electric Utilities,Electric Utilities,CENTRAIS ELETRICAS BRASILEIRAS SA,ELETROBRAS
-COGN3,02.800.026/0001-40,ON,Consumer Cyclical,Diversified,Educational Services,COGNA EDUCAÇÃO S.A.,KROTON EDUCACIONAL S.A.
-CPLE5,76.483.817/0001-20,PNA,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
-CPLE6,76.483.817/0001-20,PNB,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
-CPLE3,76.483.817/0001-20,ON,Utilities,Electric Utilities,Electric Utilities,COMPANHIA PARANAENSE DE ENERGIA,COPEL
-YDUQ3,08.807.432/0001-10,ON,Consumer Cyclical,Diversified,Educational Services,YDUQS PARTICIPACOES S.A.,ESTACIO PARTICIPAÇÕES SA
-EQMA3B,06.272.793/0001-84,ON,Utilities,Electric Utilities,Electric Utilities,EQUATORIAL MARANHÃO DISTRIBUIDORA DE ENERGIA S.A.,EQUATORIAL MARANHÃO DISTRIBUIDORA DE ENERGIA S.A.
-NUTR3,51.128.999/0001-90,ON,Basic Materials,Chemicals,Fertilizers,NUTRIPLANT INDUSTRIA E COMÉRCIO S/A,NUTRIPLANT
-BAHI3,45.987.245/0001-92,ON,Consumer Cyclical,Diversified,Educational Services,BAHEMA EDUCACAO S.A.,BAHEMA
-BIOM3,04.752.991/0001-10,ON,Health,Pharmaceutical and Others Products,Pharmaceutical and Others Products,BIOMM SA,BIOMM SA
-SLED3,60.500.139/0001-26,ON,Consumer Cyclical,Retail,Diversified Retailers,SARAIVA SA LIVREIROS EDITORES,EDITORA SARAIVA
-ALPK3,60.537.263/0001-66,ON,Capital Goods and Services,Diversified Services,Diversified Services,"ALLPARK EMPREENDIMENTOS, PARTICIPAÇÕES E SERVIÇOS S.A.","ALLPARK EMPREENDIMENTOS, PARTICIPAÇÕES E SERVIÇOS S.A."
-AMBP3,12.648.266/0001-24,ON,Utilities,Water Utilities,Water Utilities,AMBIPAR PARTICIPAÇÕES E EMPREENDIMENTOS S.A.,AMBIPAR PARTICIPAÇÕES E EMPREENDIMENTOS S.A.
-DMVF3,12.108.897/0001-50,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,D1000 VAREJO FARMA PARTICIPAÇÕES S.A.,
-LJQQ3,96.418.264/0218-02,ON,Consumer Cyclical,Retail,Diversified Retailers,LOJAS QUERO-QUERO S.A.,LOJAS QUERO-QUERO S.A.
-PDTC3,02.365.069/0001-44,ON,Financial,Diversified Financial Services,Diversified Financial Services,PADTEC HOLDING S.A.,--
-SOMA3,10.285.590/0001-08,ON,Consumer Cyclical,Retail,"Apparel, Fabric and Footwear",GRUPO DE MODA SOMA S.A.,RBX RIO COMÉRCIO DE ROUPAS S.A.
-LAVV3,26.462.693/0001-28,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,LAVVI EMPREENDIMENTOS IMOBILIÁRIOS S.A.,LAVVI EMPREENDIMENTOS IMOBILIÁRIOS
-PETZ3,18.328.118/0001-09,ON,Consumer Cyclical,Retail,Diversified Retailers,PET CENTER COMERCIO E PARTICIPACOES S.A.,PETZ PET CENTER
-PLPL3,23.890.968/0001-36,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,PLANO & PLANO DESENVOLVIMENTO IMOBILIÁRIO S.A.,PLANO & PLANO DESENVOLVIMENTO IMOBILIÁRIO
-PGMN3,06.626.253/0001-53,ON,Health,Retail and Distribution,Pharmaceutical and Others Products,EMPREENDIMENTOS PAGUE MENOS S.A.,PAGUE MENOS
-SIMH3,07.415.333/0001-20,ON,Financial,Holdings - Diversified,Holdings - Diversified,SIMPAR S.A.,SIMPAR
-CURY3,08.797.760/0001-83,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,CURY CONSTRUTORA E INCORPORADORA S.A.,CURY CONSTRUTORA
-HBSA3,12.648.327/0001-53,ON,Capital Goods and Services,Transportation,Marine and Water Transport,HIDROVIAS DO BRASIL S.A.,HIDROVIAS DO BRASIL
-BOAS3,11.725.176/0001-27,ON,Financial,Diversified Financial Services,Diversified Financial Services,BOA VISTA SERVIÇOS S.A.,BOA VISTA
-MELK3,12.181.987/0001-77,ON,Consumer Cyclical,Heavy Construction,Real Estate Development,MELNICK EVEN DESENVOLVIMENTO IMOBILIÁRIO S.A.,MELNICK
+RRRP3,12.091.809/0001-55,ON,"Oil, Gas and Biofuels","Oil, Gas and Biofuels","Exploration, Refining and Distribution",3R PETROLEUM ÓLEO E GÁS S.A.,3R PETROLEUM
+SEQL3,01.599.101/0001-93,ON,Capital Goods and Services,Diversified Services,Diversified Services,SEQUOIA LOGISTICA E TRANSPORTES S.A.,SEQUOIA LOG
+TIMS3,02.421.421/0001-11,ON,Communications,Telecommunications,Telecommunications,TIM S.A.,TIM
