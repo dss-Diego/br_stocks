@@ -1,10 +1,5 @@
-data/cotahist/
-data/ftp_files/
-data/temp/
 .idea/
 .spyproject/
 *.db
 __pycache__/
 tests.py
-*.xlsx
-update_tickers.py
