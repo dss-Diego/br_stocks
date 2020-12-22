@@ -1,7 +1,6 @@
 pandas
 numpy
 matplotlib
-wget
-urllib3
 beautifulsoup4
 lxml
+requests
