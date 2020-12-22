@@ -1,222 +1,313 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug 26 16:23:14 2020
-This script will do the next steps:
-1 - create necessary directories (if not exists)
-2 - connect or create a sqlite3 database
-3 - create the table to store prices in the database (if not exists)
-4 - update prices, as follows:
-    * checks the most recent date of prices in the database
-        - if there are no prices in the database, download prices from a formated csv file in github
-            to avoid download and process lots of xml files.
-        - if there are prices in the database, and the current date is ahead
-            of the date of the last prices in the database, then proceed as follows:
-                - download and procees the file with prices from bvmfbovespa website;
-                - download and process the file with the number of shares of each ticker
-                - merge prices and shares
-                - upload the data to the database
-
-@author: Diego
-"""
-
-import datetime
-import os
-import sqlite3
-import xml.etree.ElementTree as ET
-import zipfile
-
 import pandas as pd
-import wget
+import xml.etree.ElementTree as ET
+import os
+import zipfile
+import requests
+import io
+import sqlite3
+from datetime import datetime, timedelta, date
+
+pd.set_option("display.width", 400)
+pd.set_option("display.max_columns", 10)
+pd.options.mode.chained_assignment = None
 
 cwd = os.getcwd()
-
 if not os.path.exists("data"):
     os.makedirs("data")
-if not os.path.exists(os.path.join("data", "cotahist")):
-    os.makedirs(os.path.join("data", "cotahist"))
-if not os.path.exists(os.path.join("data", "ftp_files")):
-    os.makedirs(os.path.join("data", "ftp_files"))
-if not os.path.exists(os.path.join("data", "temp")):
-    os.makedirs(os.path.join("data", "temp"))
+db = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
+cur = db.cursor()
 
-conn = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
-cur = conn.cursor()
-# %% functions
-
-
-def create_prices():
+def create_tables():
     query = """
-    CREATE TABLE IF NOT EXISTS prices
-    (
-         date DATE,
-         ticker TEXT,
-         preult REAL,
-         totneg INTEGER,
-         quatot INTEGER,
-         voltot INTEGER,
-         number_shares INTEGER
-    )"""
-    cur .execute(query)
-    return
+        CREATE TABLE IF NOT EXISTS prices(
+            date DATE,
+            ticker CHARACTER VARYING(12),
+            preult REAL,
+            totneg INTEGER,
+            quatot INTEGER,
+            voltot INTEGER,
+            number_shares BIGINT
+        )"""
+    db.execute(query)
 
-
-def get_last_database_price_date():
+def next_price_dates():
     """
-    Returns
-    date of the last available price in the database
+    returns a range of dates that are used to download prices.
+    It will returns dates that:
+        * before or equal today;
+        * are not brazillian holidays;
+        * are not weekends.
+    Returns: pd.Series
     """
-    query = "SELECT date FROM prices ORDER BY date DESC LIMIT (1)"
-    x = pd.read_sql(query, conn)
-    if len(x) > 0:
-        last_date = datetime.datetime.strptime(
-            x.values[0][0], '%Y-%m-%d %H:%M:%S').date()
-
-    # if the database is new, with no prices, to avoid downloading and processing lots of xml price files,
-    # that takes a lot of time to complete, it will take the last available file with prices in github.
-    # Even if the github file is not up to date, it will be much easier to download only the missing files
+    query = "SELECT date FROM prices ORDER BY date DESC LIMIT(1)"
+    last_db_date = db.execute(query).fetchone()
+    if last_db_date is not None:
+        last_db_date = datetime.strptime(db.execute(query).fetchone()[0], '%Y-%m-%d').date()
     else:
-        df = pd.read_csv(
-            "https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/all_prices_table.csv", parse_dates=['date'])
-        df.to_sql('prices', conn, if_exists='replace', index=False)
-        query = "SELECT date FROM prices ORDER BY date DESC LIMIT (1)"
-        x = pd.read_sql(query, conn)
-        last_date = datetime.datetime.strptime(
-            x.values[0][0], '%Y-%m-%d %H:%M:%S').date()
-    return last_date
+        # if the database is new, with no prices, to avoid downloading and processing lots of xml price files,
+        # that takes a lot of time to complete, it will take the last available file with prices in github.
+        # Even if the github file is not up to date, it will be much easier to download only the missing files
+        prices = pd.read_csv(
+            "https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/all_prices_table.csv",
+            parse_dates=['date']
+        )
+        prices['date'] = prices['date'].dt.date
+        prices.to_sql('prices', db, if_exists='append', index=False)
+        query = 'SELECT date FROM prices ORDER BY date DESC LIMIT (1)'
+        last_db_date = datetime.strptime(db.execute(query).fetchone()[0], '%Y-%m-%d').date()
 
+    # next_date -> last date in the database + 1 day
+    next_date = last_db_date + timedelta(days=1)
+    brazilian_holidays = pd.read_excel('https://www.anbima.com.br/feriados/arqs/feriados_nacionais.xls')[:-9]['Data']
 
-def process_file(file):
-    for fl in os.listdir(os.path.join(cwd, "data", "temp")):
-        os.remove(os.path.join(cwd, "data", "temp", fl))
+    data_range = pd.date_range(start=next_date, end=date.today(), freq='B').to_series()
 
-    file = 'IN'+file+'.zip'
-    zipfile.ZipFile(
-        os.path.join(cwd, "data", "ftp_files", file)
-    ).extractall(os.path.join(cwd, "data", "temp"))
-    file_name = max(os.listdir(os.path.join(cwd, "data", "temp")))
-    file_version = file_name[8:-40]
-    if file_version == '.01':
-        ns = '{urn:bvmf.100.01.xsd}'
-    if file_version == '.02':
-        ns = '{urn:bvmf.100.02.xsd}'
-    tree = ET.parse(os.path.join(cwd, "data", "temp", file_name))
+    # remove holidays
+    data_range = data_range[~data_range.isin(brazilian_holidays)]
+
+    return data_range
+
+def get_prices_file(date):
+    """
+    Download the zip file with prices, and returns the content as bytes
+    Args:
+        date: Timestamp
+    Returns:
+        bytes
+    """
+
+    date = date.strftime('%d%m%Y')
+    file_url = f'http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D{date}.ZIP'
+    response = requests.get(file_url)
+
+    if response.status_code == 404:
+        print('Prices from '+str(date)+' are not available. Please try again later.')
+        return None
+    zip_file = zipfile.ZipFile(io.BytesIO(response.content))
+    bytes_data = zip_file.read(zip_file.namelist()[0])
+
+    return bytes_data
+
+def process_prices_file(bytes_data):
+    """
+    takes bytes with prices (from get_prices_file function)
+    process the data to return the prices in a dataframe
+    Args:
+        bytes_data: bytes (from get_prices_file) function
+    Returns:
+        dataframe
+    """
+
+    # define colspecs and column names and put data into a dataframe
+    colspecs = [[0, 2], [2, 10], [10, 12], [12, 24], [24, 27], [27, 39], [39, 49], [49, 52], [52, 56],
+                [56, 69], [69, 82], [82, 95], [95, 108], [108, 121], [121, 134], [134, 147], [147, 152],
+                [152, 170], [170, 188], [188, 201], [201, 202], [202, 210], [210, 217], [217, 230], [230, 242],
+                [242, 245]]
+    column_names = ['tipreg', 'date', 'codbdi', 'ticker', 'tpmerc', 'nomres', 'especi', 'prazot',
+                    'modref', 'preabe', 'premax', 'premin', 'premed', 'preult', 'preofc', 'preofv',
+                    'totneg', 'quatot', 'voltot', 'preexe', 'indopc', 'datven', 'factcot', 'ptoexe',
+                    'codisi', 'dismes']
+    prices = pd.read_fwf(io.BytesIO(bytes_data), colspecs=colspecs)
+    prices.columns = column_names
+
+    # clean the data, removing last line, converting formats and dropping unnecessary rows
+    prices = prices.iloc[:-1]
+    cols_to_convert = ['codbdi', 'tpmerc', 'totneg', 'quatot', 'voltot']
+    prices[cols_to_convert] = prices[cols_to_convert].astype(int)
+    prices = prices.drop(columns=['tipreg', 'nomres', 'prazot', 'modref', 'preabe', 'premax', 'premin',
+                                  'premed', 'preofc', 'preofv', 'indopc', 'factcot', 'ptoexe', 'codisi', 'dismes', 'datven', 'preexe'])
+    prices[['preult', 'voltot']] = prices[['preult', 'voltot']] / 100
+
+    # drop data according to tpmerc
+    """
+    030 - mercado a termo
+    020 - mercado fracionario
+    017 - leilao
+    70 - opcoes de compra
+    80 - opcoes de venda
+    12 - exercicio de opcoes de compra
+    13 - exercicio de opcoes de venda
+    """
+    prices = prices[~prices['tpmerc'].isin([30, 20, 17, 70, 80, 12, 13])]
+
+    # drop data according to codbdi
+    """
+    10 - direitos e recibos
+    14 - cert. invest/tit.div.publica
+    22 - bonus privados
+    12 - fiis
+    """
+    prices = prices[~prices['codbdi'].isin([10, 14, 22, 12])]
+    prices = prices[~prices['especi'].str[0:3].isin(['DRN', 'DR3'])]
+    prices = prices.drop(columns=['codbdi', 'tpmerc', 'especi'])
+    prices['date'] = pd.to_datetime(prices['date']).dt.date
+
+    return prices
+
+def get_shares_file(date):
+    """
+    Download the file with the number of shares and returns bytes
+    Args:
+        date: Timestamp
+    Returns: bytes
+    """
+    file_date = datetime.strftime(date, "%y%m%d")
+    file_url = f'http://www.b3.com.br/pesquisapregao/download?filelist=IN{file_date}.zip'
+    response = requests.get(file_url)
+
+    # original zipfile. Inside this one, there is another zipfile
+    zip_file = zipfile.ZipFile(io.BytesIO(response.content))
+
+    # The zipfile that is inside the original zipfile. Inside this one, is the XML file
+    zip_file2 = zipfile.ZipFile(io.BytesIO(zip_file.read(zip_file.namelist()[0])))
+
+    # Inside the zip_file2 there are 2 xml files. We need the latest one.
+    xml_bytes_data = zip_file2.read(max(zip_file2.namelist()))
+
+    return xml_bytes_data
+
+def process_xml_bytes_data(xml_bytes_data, ns='{urn:bvmf.100.02.xsd}'):
+    """
+    Takes the bytes with the xml from the function get_shares_file.
+    The xml file has the number of shares, that are not available in the prices files
+    Args:
+        xml_bytes_data: bytes (from the get_shares_file function)
+        ns: str. Indicates the version of the xml file. Options are:
+            '{urn:bvmf.100.01.xsd}' --> files until 2016-01-14
+            '{urn:bvmf.100.02.xsd}' --> files after 2016-01-14
+    Returns: dataframe
+    """
+
+    tree = ET.parse(io.BytesIO(xml_bytes_data))
     root = tree.getroot()
     bizfilehdr = root.find('{urn:bvmf.052.01.xsd}BizFileHdr')
     xchg = bizfilehdr.find('{urn:bvmf.052.01.xsd}Xchg')
-    asset = {}
+    assets = {}
     i = 0
     for bizgrp in xchg.findall('{urn:bvmf.052.01.xsd}BizGrp'):
         for doc in bizgrp.findall(ns + 'Document'):
             for inst in doc.findall(ns + 'Instrm'):
-                rptparams = inst.find(ns + 'RptParams')
+
+                # find rptparams
+                rptparams  = inst.find(ns + 'RptParams')
+
+                # inside rptparams finds rptdtandtm
                 rptdtandtm = rptparams.find(ns + 'RptDtAndTm')
+                # inside rptdtandtm finds dt
                 dt = rptdtandtm.find(ns + 'Dt').text
+
                 fininstrmattrcmon = inst.find(ns + 'FinInstrmAttrCmon')
-                asst = fininstrmattrcmon.find(ns + 'Asst').text
-                asstdesc = fininstrmattrcmon.find(ns + 'AsstDesc').text
-                desc = fininstrmattrcmon.find(ns + 'Desc').text
+                mkt = int(fininstrmattrcmon.find(ns + 'Mkt').text)
+
+                # instrminf can be equity or option
                 instrminf = inst.find(ns + 'InstrmInf')
+
                 eqtyinf = instrminf.find(ns + 'EqtyInf')
+
                 if eqtyinf is not None:
+                    sctyctgy = int(eqtyinf.find(ns + 'SctyCtgy').text)
                     tckrsymb = eqtyinf.find(ns + 'TckrSymb').text
-                    if tckrsymb[-1:] not in (['F', 'B', 'G', 'L']):
-                        spcfctncd = eqtyinf.find(ns + 'SpcfctnCd').text
-                        crpnnm = eqtyinf.find(ns + 'CrpnNm').text
-                        mktcptlstn = eqtyinf.find(ns + 'MktCptlstn').text
-                        asset[i] = {'date': dt, 'asst': asst, 'assdesc': asstdesc, 'desc': desc,
-                                    'spcfctncd': spcfctncd, 'crpnnm': crpnnm, 'ticker': tckrsymb, 'number_shares': int(mktcptlstn)}
-                        i += 1
-    df = pd.DataFrame.from_dict(asset, orient='index')
-    df[['type', 'b', 'c']] = df['spcfctncd'].str.split(n=-1, expand=True)
-    df = df[~df['type'].isin(['DRN', 'REC', 'BDR', 'CPA', 'DIA', 'DIR'])]
-    df = df[df['ticker'].str[-1:] != 'F']
-    df = df[df['ticker'].str[-1].str.isnumeric()]
-    df = df[['date', 'ticker', 'number_shares']]
-    df = df[~df[['date', 'ticker']].duplicated()]
+                    spcfctncd = eqtyinf.find(ns + 'SpcfctnCd').text
+                    crpnnm = eqtyinf.find(ns + 'CrpnNm').text
+                    mktcptlstn = int(eqtyinf.find(ns + 'MktCptlstn').text)
+                    if eqtyinf.find(ns + 'LastPric') is not None:
+                        lastpric = float(eqtyinf.find(ns + 'LastPric').text)
+                    else:
+                        lastpric = 0.0
 
-    for fl in os.listdir(os.path.join(cwd, "data", "temp")):
-        os.remove(os.path.join(cwd, "data", "temp", fl))
-    return df
+                    assets[i] = dict(
+                        date=dt,
+                        mkt=mkt,
+                        sctyctgy=sctyctgy,
+                        ticker=tckrsymb,
+                        spcfctncd=spcfctncd,
+                        crpnnm=crpnnm,
+                        number_shares=mktcptlstn,
+                        lastpric=lastpric
+                    )
+                    i += 1
 
+    stocks = pd.DataFrame.from_dict(assets, orient='index')
 
-def get_shares(to_download):
-    file = datetime.datetime.strftime(to_download, "%y%m%d")
-    wget.download(
-        f'http://www.b3.com.br/pesquisapregao/download?filelist=IN{file}.zip,',
-        os.path.join(cwd, "data", "ftp_files", f"{file}.zip")
-    )
-    zip_c = zipfile.ZipFile(os.path.join(
-        cwd, "data", "ftp_files", f"{file}.zip"))
-    zipfl = zip_c.namelist()
-    zip_c.extract(zipfl[0], os.path.join(cwd, "data", "ftp_files"))
-    shares = process_file(file)
-    print('downloaded file with shares from ' +
-          (datetime.datetime.strftime(to_download, '%Y-%m-%d')))
-    del zip_c
-    os.remove(os.path.join(cwd, "data", "ftp_files", f"{file}.zip"))
+    # drop data according to mkt code
+    """
+    030 - mercado a termo
+    020 - mercado fracionario
+    017 - leilao
+    70 - opcoes de compra
+    80 - opcoes de venda
+    12 - exercicio de opcoes de compra
+    13 - exercicio de opcoes de venda
+    """
+    stocks = stocks[~stocks['mkt'].isin([30, 20, 17, 70, 80, 12, 13])]
 
-    return shares
+    stocks = stocks[stocks['spcfctncd'].str[0:2] != 'CI']
 
+    """
+    sctyctgy 
+    1 - DRN
+    9 - REC
+    6 - FIIS
+    3 - ETF
+    12 - DIR
+    23 - BNS
+    13 - UNT
+    16 - indexes
+    21 - ETF
+    23 - BNS
+    11 - stocks
+    """
+    stocks = stocks[~stocks['sctyctgy'].isin([9, 1, 23, 12, 23, 6, 3, 21, 16])]
+    stocks = stocks[~stocks['spcfctncd'].str[0:3].isin(['DIA', 'CPA'])]
+
+    return stocks
+
+def merge_shares(prices, shares):
+    """
+    Merge the dataframe with prices with the dataframe with number of shares
+    Args:
+        prices: dataframe (from the process_prices_file function)
+        shares: dataframe (from the process_xml_bytes_data function)
+    Returns: dataframe
+    """
+    shares = shares[~shares[['date', 'ticker']].duplicated()]
+    shares['date'] = pd.to_datetime(shares['date'])
+    prices['date'] = pd.to_datetime(prices['date'])
+    prices_and_shares = prices.merge(shares[['date', 'ticker', 'number_shares']], how='left',
+                                     left_on=['date', 'ticker'], right_on=['date', 'ticker'])
+    prices_and_shares['date'] = prices_and_shares['date'].dt.date
+    return prices_and_shares
 
 def update_prices():
-    create_prices()
-    last_date = get_last_database_price_date()
-    next_date = last_date + datetime.timedelta(days=1)
-    if next_date <= datetime.date.today():
-        number_of_days = datetime.date.today() - next_date
-        for i in range(0, number_of_days.days+1):
-            to_download = next_date+datetime.timedelta(days=i)
-            weekday = to_download.weekday()
-            if weekday < 5:
-                date = to_download.strftime("%d%m%Y")
-                try:
-                    file_url = f'http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D{date}.ZIP'
-                    wget.download(
-                        file_url,
-                        os.path.join(cwd, "data", "cotahist")
-                    )
-                    with zipfile.ZipFile(os.path.join(cwd, "data", "cotahist", f"COTAHIST_D{date}.ZIP"), 'r') as zip_ref:
-                        zip_ref.extractall(os.path.join(cwd, "data", "temp"))
-                    colspecs = [[0, 2], [2, 10], [10, 12], [12, 24], [24, 27], [27, 39], [39, 49], [49, 52], [52, 56],
-                                [56, 69], [69, 82], [82, 95], [95, 108], [
-                                    108, 121], [121, 134], [134, 147], [147, 152],
-                                [152, 170], [170, 188], [188, 201], [201, 202], [202, 210], [210, 217], [217, 230], [230, 242], [242, 245]]
-                    column_names = ['tipreg', 'date', 'codbdi', 'ticker', 'tpmerc', 'nomres', 'especi', 'prazot',
-                                    'modref', 'preabe', 'premax', 'premin', 'premed', 'preult', 'preofc', 'preofv',
-                                    'totneg', 'quatot', 'voltot', 'preexe', 'indopc', 'datven', 'factcot', 'ptoexe',
-                                    'codisi', 'dismes']
-                    prices = pd.read_fwf(
-                        os.path.join(cwd, "data", "temp",
-                                     f"COTAHIST_D{date}.TXT"),
-                        colspecs=colspecs
-                    )
-                    prices.columns = column_names
-                    prices = prices.iloc[:-1, :]
-                    prices[['preabe', 'premax', 'premin', 'premed', 'preult', 'preofc', 'preofv', 'voltot']] = prices[[
-                        'preabe', 'premax', 'premin', 'premed', 'preult', 'preofc', 'preofv', 'voltot']] / 100
-                    prices[['type', 'b', 'c']] = prices['especi'].str.split(
-                        n=-1, expand=True)
-                    prices = prices[~prices['type'].isin(
-                        ['DRN', 'REC', 'BDR', 'CPA', 'DIA', 'DIR'])]
-                    prices = prices[prices['ticker'].str[-1:] != 'F']
-                    prices = prices[prices['ticker'].str[-1].str.isnumeric()]
-                    prices = prices[prices['preexe'] == 0]
-                    prices['date'] = pd.to_datetime(prices['date'])
-                    prices = prices[['date', 'ticker',
-                                     'preult', 'totneg', 'quatot', 'voltot']]
-                    print("downloaded file with prices of the day " +
-                          str(datetime.datetime.strptime(date, '%d%m%Y').date()))
-                    shares = get_shares(to_download)
-                    df = prices.merge(
-                        shares[['ticker', 'number_shares']], how='left', left_on='ticker', right_on='ticker')
-                    df.to_sql('prices', conn, if_exists='append', index=False)
-                    print("Sucessfully update prices of the day " +
-                          str(datetime.datetime.strptime(date, '%d%m%Y').date()))
-                except:
-                    print("Prices of the day "+str(datetime.datetime.strptime(date, '%d%m%Y').date()
-                                                   )+' were not possible to be downloaded. Please try again later.')
-    else:
-        print("no updates available.")
-    return
+    """
+    Pipeline to update the prices
+    """
+    create_tables()
+    dates = next_price_dates()
 
-# %%
+    for date in dates:
+        txt_file_name = get_prices_file(date)
+        if txt_file_name == None:
+            break
+        prices = process_prices_file(txt_file_name)
+
+        xml_bytes_data = get_shares_file(date)
+        shares = process_xml_bytes_data(xml_bytes_data)
+
+        stock_prices = merge_shares(prices, shares)
+
+        stock_prices.to_sql('prices', db, if_exists='append', index=False)
+
+        print('Updated prices from ' + str(stock_prices.iloc[-1]['date'])[0:11])
+    return None
+
+# update_prices()
+
+
+# cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+# print(cur.fetchall())
+
+
+# prices = pd.read_sql('select * from prices', db)
+# prices.columns
+#

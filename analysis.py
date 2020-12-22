@@ -7,36 +7,22 @@ Created on Fri Aug 14 13:52:36 2020
 
 import os
 import sqlite3
-
 import numpy as np
 import pandas as pd
-
 import plots as _plots
-import update_companies_info
 import update_prices
+import update_companies_info
 
 pd.set_option("display.width", 400)
 pd.set_option("display.max_columns", 10)
 pd.options.mode.chained_assignment = None
 
+update_prices.update_prices()
+update_companies_info.update_db()
+
 cwd = os.getcwd()
-
-if not os.path.exists("data"):
-    os.makedirs("data")
-if not os.path.exists(os.path.join("data", "cotahist")):
-    os.makedirs(os.path.join("data", "cotahist"))
-if not os.path.exists(os.path.join("data", "ftp_files")):
-    os.makedirs(os.path.join("data", "ftp_files"))
-if not os.path.exists(os.path.join("data", "temp")):
-    os.makedirs(os.path.join("data", "temp"))
-
-
 conn = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
 cur = conn.cursor()
-
-update_companies_info.update_db()
-update_prices.update_prices()
-
 
 # %% Functions
 class Ticker:
@@ -149,7 +135,7 @@ Try setting the financial statements to individual:
         """
         if start_period == "all":
             begin_period = pd.to_datetime("1900-01-01")
-            return begin_period
+            return begin_period.date()
         elif start_period not in ["all", "last"]:
             try:
                 pd.to_datetime(start_period)
@@ -172,7 +158,7 @@ Try setting the financial statements to individual:
             begin_period = pd.to_datetime(last_date.values[0][0])
         else:
             begin_period = pd.to_datetime(start_period)
-        return begin_period
+        return begin_period.date()
 
     def create_pivot_table(df):
         """
@@ -190,7 +176,7 @@ Try setting the financial statements to individual:
         if 'ytd' in value_types:
             shifted_values = df[['dt_fim_exerc', 'cd_conta', 'ytd']]
             shifted_values = shifted_values.set_index(
-                [(shifted_values['dt_fim_exerc'] + pd.DateOffset(years=1)), shifted_values['cd_conta']])
+                [(pd.to_datetime(shifted_values['dt_fim_exerc']) + pd.DateOffset(years=1)), shifted_values['cd_conta']])
             df = df.set_index([df['dt_fim_exerc'], df['cd_conta']])
             df['ytd % change'] = df['ytd'] / shifted_values['ytd']
         df[new_columns] = (df[new_columns] - 1) * 100
@@ -258,7 +244,7 @@ Try setting the financial statements to individual:
                     FROM dre
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}'  
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn)
         df["quarter_value"] = df[["cd_conta", "ytd"]
@@ -341,7 +327,7 @@ Try setting the financial statements to individual:
                     FROM dfc
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}'  
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn)
         df["quarter_value"] = df[["cd_conta", "ytd"]
@@ -438,7 +424,7 @@ Try setting the financial statements to individual:
                     FROM dre
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}'  
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                           AND (ds_conta = 'Resultado Líquido das Operações Continuadas' OR ds_conta = 'Lucro/Prejuízo do Período')
                     ORDER BY dt_fim_exerc"""
         income_statement = pd.read_sql(
@@ -499,7 +485,7 @@ Try setting the financial statements to individual:
                     FROM dre 
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}' 
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                           AND (ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR ds_conta = 'Resultado Operacional')
                     ORDER BY dt_fim_exerc"""
         income_statement = pd.read_sql(
@@ -559,7 +545,7 @@ Try setting the financial statements to individual:
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}' 
                           AND ds_conta = 'Depreciação, Amortização e Exaustão'
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
         df["quarter_d_a"] = df["ytd_d_a"] - df["ytd_d_a"].shift(1)
@@ -598,7 +584,7 @@ Try setting the financial statements to individual:
             quarter = False
             ttm = False
         begin_period = Ticker.get_begin_period(
-            self, function="ebit", start_period=start_period
+            self, function="ebitda", start_period=start_period
         )
         begin_period = begin_period + pd.DateOffset(months=-12)
         query = f"""SELECT dre.dt_fim_exerc AS date, 
@@ -610,7 +596,7 @@ Try setting the financial statements to individual:
                     LEFT JOIN dva ON (dre.dt_fim_exerc=dva.dt_fim_exerc AND dre.grupo_dfp=dva.grupo_dfp AND dre.cnpj=dva.cnpj)
                     WHERE dre.cnpj = '{self.cnpj}' 
                           AND dre.grupo_dfp = '{self.grupo}' 
-                          AND dre.dt_fim_exerc >= '{begin_period}'
+                          AND dre.dt_fim_exerc >= '{begin_period.date()}'
                           AND (dre.ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR dre.ds_conta = 'Resultado Operacional')
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                     ORDER BY dre.dt_fim_exerc"""
@@ -669,14 +655,14 @@ Try setting the financial statements to individual:
             quarter = False
             ttm = False
         begin_period = Ticker.get_begin_period(
-            self, function="net_income", start_period=start_period
+            self, function="revenue", start_period=start_period
         )
         begin_period = begin_period + pd.DateOffset(months=-12)
         query = f"""SELECT dt_fim_exerc AS date, fiscal_quarter, vl_conta AS ytd_revenue
                     FROM dre
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}'  
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                           AND cd_conta = '3.01'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
@@ -818,8 +804,7 @@ Try setting the financial statements to individual:
         )
         begin_period = begin_period + pd.DateOffset(months=-7)
         ni = Ticker.net_income(
-            self, quarter=False, ytd=False, start_period=begin_period
-        )
+            self, quarter=False, ytd=False, start_period=begin_period)
         shares = Ticker.total_shares(self, start_period=begin_period)
         eps = shares.merge(
             ni[["ttm_net_income"]], how="outer", left_index=True, right_index=True
@@ -1035,7 +1020,7 @@ Try setting the financial statements to individual:
                     LEFT JOIN dre AS b ON (a.dt_fim_exerc=b.dt_fim_exerc AND a.grupo_dfp=b.grupo_dfp AND a.cnpj=b.cnpj)
                     WHERE a.cnpj = '{self.cnpj}' AND
                         a.grupo_dfp = '{self.grupo}' AND
-                        a.dt_fim_exerc >= '{begin_period}' AND
+                        a.dt_fim_exerc >= '{begin_period.date()}' AND
                         a.cd_conta = '3.03' AND
                         b.cd_conta = '3.01'
                     ORDER BY a.dt_fim_exerc"""
@@ -1102,7 +1087,7 @@ Try setting the financial statements to individual:
                     LEFT JOIN dre b ON (a.dt_fim_exerc=b.dt_fim_exerc AND a.grupo_dfp=b.grupo_dfp AND a.cnpj=b.cnpj)
                     WHERE a.cnpj = '{self.cnpj}' AND
                         a.grupo_dfp = '{self.grupo}' AND
-                        a.dt_fim_exerc >= '{begin_period}' AND
+                        a.dt_fim_exerc >= '{begin_period.date()}' AND
                         b.cd_conta = '3.01' AND
                         (a.ds_conta = 'Resultado Líquido das Operações Continuadas' OR a.ds_conta = 'Lucro/Prejuízo do Período')
                     ORDER BY a.dt_fim_exerc"""
@@ -1172,7 +1157,7 @@ Try setting the financial statements to individual:
             quarter = False
             ttm = False
         begin_period = Ticker.get_begin_period(
-            self, function="ebit", start_period=start_period
+            self, function="ebitda_margin", start_period=start_period
         )
         begin_period = begin_period + pd.DateOffset(months=-12)
         query = f"""SELECT dre_ebit.dt_fim_exerc AS date, 
@@ -1192,7 +1177,7 @@ Try setting the financial statements to individual:
                         dre_ebit.cnpj = dre_revenue.cnpj)                        
                     WHERE dre_ebit.cnpj = '{self.cnpj}' 
                           AND dre_ebit.grupo_dfp = '{self.grupo}' 
-                          AND dre_ebit.dt_fim_exerc >= '{begin_period}'
+                          AND dre_ebit.dt_fim_exerc >= '{begin_period.date()}'
                           AND (dre_ebit.ds_conta = 'Resultado Antes do Resultado Financeiro e dos Tributos' OR dre_ebit.ds_conta = 'Resultado Operacional')
                           AND dva.ds_conta = 'Depreciação, Amortização e Exaustão'
                           AND dre_revenue.cd_conta = '3.01'
@@ -1437,14 +1422,14 @@ Try setting the financial statements to individual:
             quarter = False
             ttm = False
         begin_period = Ticker.get_begin_period(
-            self, function="net_income", start_period=start_period
+            self, function="cfo", start_period=start_period
         )
         begin_period = begin_period + pd.DateOffset(months=-12)
         query = f"""SELECT dt_fim_exerc AS date, fiscal_quarter, vl_conta AS ytd_cfo
                     FROM dfc
                     WHERE cnpj = '{self.cnpj}' 
                           AND grupo_dfp = '{self.grupo}'  
-                          AND dt_fim_exerc >= '{begin_period}'
+                          AND dt_fim_exerc >= '{begin_period.date()}'
                           AND cd_conta = '6.01'
                     ORDER BY dt_fim_exerc"""
         df = pd.read_sql(query, conn, index_col="date", parse_dates=['date'])
