@@ -9,6 +9,7 @@ import requests
 import io
 import sqlite3
 import os
+import datetime
 
 cwd = os.getcwd()
 
@@ -268,7 +269,15 @@ def load_fs(files_dict):
         process_df(df)
     return
 
-def update_db():
+def update_db(log=True):
+
+    if log:
+        now = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+        log_name = f'c_log_{now}.txt'
+        with open(os.path.join('data', 'logs', log_name), 'w') as log_file:
+            now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            log_file.write(f'{now} - Starting\n')
+
     # create database tables
     create_tables()
 
@@ -282,6 +291,10 @@ def update_db():
 
     if len(new_files) == 0:
         print("All company files are up to date.")
+        if log:
+            now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            with open(os.path.join('data', 'logs', log_name), 'a') as log_file:
+                log_file.write(f'{now} - All company files are up to date.\n')
 
     for idx, row in new_files.iterrows():
         # 1 - download the zip file
@@ -305,6 +318,10 @@ def update_db():
                        VALUES ('{row['file_name']}', '{row['url_date']}')"""
         )
         print(f"{row['file_name']} downloaded successfully.")
+        if log:
+            now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            with open(os.path.join('data', 'logs', log_name), 'a') as log_file:
+                log_file.write(f"{now} - {row['file_name']} downloaded successfully.\n")
         db.commit()
 
     return

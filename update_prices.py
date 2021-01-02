@@ -14,6 +14,9 @@ pd.options.mode.chained_assignment = None
 cwd = os.getcwd()
 if not os.path.exists("data"):
     os.makedirs("data")
+if not os.path.exists(os.path.join('data', 'logs')):
+    os.makedirs(os.path.join('data', 'logs'))
+
 db = sqlite3.connect(os.path.join(cwd, "data", "finance.db"))
 cur = db.cursor()
 
@@ -59,6 +62,11 @@ def next_price_dates():
     # next_date -> last date in the database + 1 day
     next_date = last_db_date + timedelta(days=1)
     brazilian_holidays = pd.read_excel('https://www.anbima.com.br/feriados/arqs/feriados_nacionais.xls')[:-9]['Data']
+    current_year = date.today().year
+    brazilian_holidays = brazilian_holidays.append(pd.Series(datetime(current_year, 12, 24))) # current christmas eve
+    brazilian_holidays = brazilian_holidays.append(pd.Series(datetime(current_year-1, 12, 24)))  # previous christmas eve
+    brazilian_holidays = brazilian_holidays.append(pd.Series(datetime(current_year, 12, 31)))  # current new year's eve
+    brazilian_holidays = brazilian_holidays.append(pd.Series(datetime(current_year-1, 12, 31)))  # previous new year's eve
 
     data_range = pd.date_range(start=next_date, end=date.today(), freq='B').to_series()
 
@@ -67,7 +75,7 @@ def next_price_dates():
 
     return data_range
 
-def get_prices_file(date):
+def get_prices_file(date, log_name=False):
     """
     Download the zip file with prices, and returns the content as bytes
     Args:
@@ -82,6 +90,10 @@ def get_prices_file(date):
 
     if response.status_code == 404:
         print('Prices from '+str(date)+' are not available. Please try again later.')
+        if log_name != False:
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            with open(os.path.join('data', 'logs', log_name), 'a') as log_file:
+                log_file.write(f'{now} - Prices from '+str(date)+' are not available. Please try again later.\n')
         return None
     zip_file = zipfile.ZipFile(io.BytesIO(response.content))
     bytes_data = zip_file.read(zip_file.namelist()[0])
@@ -278,10 +290,20 @@ def merge_shares(prices, shares):
     prices_and_shares['date'] = prices_and_shares['date'].dt.date
     return prices_and_shares
 
-def update_prices():
+def update_prices(log=True):
     """
     Pipeline to update the prices
     """
+
+    if log:
+        now = datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+        log_name = f'p_log_{now}.txt'
+        with open(os.path.join('data', 'logs', log_name), 'w') as log_file:
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            log_file.write(f'{now} - Starting\n')
+    else:
+        log_name = False
+
     create_tables()
     dates = next_price_dates()
 
@@ -299,6 +321,10 @@ def update_prices():
         stock_prices.to_sql('prices', db, if_exists='append', index=False)
 
         print('Updated prices from ' + str(stock_prices.iloc[-1]['date'])[0:11])
+        if log:
+            now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            with open(os.path.join('data', 'logs', log_name), 'a') as log_file:
+                log_file.write(f'{now} - Updated prices from ' + str(stock_prices.iloc[-1]['date'])[0:11] + '\n')
     return None
 
 # update_prices()

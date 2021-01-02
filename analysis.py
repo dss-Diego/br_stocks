@@ -46,6 +46,9 @@ class Ticker:
                              WHERE ticker = '{self.ticker}'""",
             conn,
         )
+        if len(df) == 0:
+            print('unknown ticker')
+            return
         self.cnpj = df["cnpj"][0]
         self.type = df["type"][0]
         self.sector = df["sector"][0]
