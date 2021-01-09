@@ -41,6 +41,7 @@ def create_tables():
                         vl_conta BIGINT, 
                         itr_dfp CHARACTER VARYING(3))"""
         )
+        db.execute(f"CREATE INDEX idx_{fs}_cnpj_grupo ON {fs}(cnpj, grupo_dfp);")
     for fs in ["dre", "dva", "dfc"]:
         db.execute(
             f"""CREATE TABLE IF NOT EXISTS {fs}
@@ -56,6 +57,7 @@ def create_tables():
                         fiscal_quarter SMALLINT
                         )"""
         )
+        db.execute(f"CREATE INDEX idx_{fs}_cnpj_grupo ON {fs}(cnpj, grupo_dfp);")
     db.execute(
         """CREATE TABLE IF NOT EXISTS dmpl
                    (cnpj CHARACTER VARYING(18), 
@@ -279,7 +281,9 @@ def update_db(log=True):
             log_file.write(f'{now} - Starting\n')
 
     # create database tables
-    create_tables()
+    query = "SELECT name FROM sqlite_master WHERE type='table' AND name='dre';"
+    if cur.execute(query).fetchone() == None:
+        create_tables()
 
     # Update tickers registers with data from github
     tickers = pd.read_csv('https://raw.githubusercontent.com/dss-Diego/br_stocks/master/data/tickers.csv')

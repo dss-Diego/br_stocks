@@ -32,6 +32,7 @@ def create_tables():
             number_shares BIGINT
         )"""
     db.execute(query)
+    db.execute("CREATE INDEX idx_prices_ticker ON prices(ticker);")
 
 def next_price_dates():
     """
@@ -304,7 +305,11 @@ def update_prices(log=True):
     else:
         log_name = False
 
-    create_tables()
+    # create database tables
+    query = "SELECT name FROM sqlite_master WHERE type='table' AND name='prices';"
+    if cur.execute(query).fetchone() == None:
+        create_tables()
+
     dates = next_price_dates()
 
     for date in dates:
